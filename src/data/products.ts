@@ -7,11 +7,11 @@ export const PRODUCTS: ProductModel[] = [
     title: 'Bioklimatik Pergola Sistemleri',
     subtitle: 'Akıllı Alüminyum Lamelli Dört Mevsim İklimlendirme',
     tag: 'En Çok Tercih Edilen',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/sasirtma_pergola_1790269026014.jpg',
     galleryImages: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+      '/images/sasirtma_pergola_1790269026014.jpg',
+      '/images/jut_sasirtma_1790269003627.jpg',
+      '/images/golgelendirme_yelken_1790268989436.jpg',
     ],
     description: '0-120° açıyla dönebilen ve geriye doğru toplanabilen alüminyum panelleriyle güneş ışığını, havalandırmayı ve yağmur korumasını parmaklarınızın ucuna getirir. Entegre gizli su tahliye kanalları ve kısılamaz lüks LED aydınlatma ile donatılmıştır.',
     features: [
@@ -39,11 +39,11 @@ export const PRODUCTS: ProductModel[] = [
     title: 'Tam Kasetli Lüks Tente',
     subtitle: 'Kumaş ve Mekanizmayı Tamamen Gizleyen Kompakt Tasarım',
     tag: 'Premium Seri',
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/kasetli_tente_1790268955447.jpg',
     galleryImages: [
-      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80'
+      '/images/kasetli_tente_1790268955447.jpg',
+      '/images/koruklu_tente_1790268976928.jpg',
+      '/images/sasirtma_pergola_1790269026014.jpg'
     ],
     description: 'Kapandığında kumaşını ve hareketli kollarını tamamen içine hapseden alüminyum kaset kutusu sayesinde kumaş ömrünü iki katına çıkarır. Dış etkenlerden, kirden ve tozdan etkilenmeyen mimari estetik.',
     features: [
@@ -68,57 +68,123 @@ export const PRODUCTS: ProductModel[] = [
   },
   {
     id: 'mafsalli-tente',
-    title: 'Mafsallı & Çift Açılır Tente',
-    subtitle: 'Geniş Alanlar İçin Klasik & Güvenilir Gölgelendirme',
+    title: 'Klasik & Motorlu Mafsallı Tente',
+    subtitle: 'Dükkan, Cafe ve Teraslar İçin Estetik Gölgelendirme',
     tag: 'Klasik & Güçlü',
-    image: 'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/kahvecin_mafsalli_tente_1790269771116.jpg',
     galleryImages: [
-      'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80'
+      '/images/kahvecin_mafsalli_tente_1790269771116.jpg',
+      '/images/kasetli_tente_1790268955447.jpg',
+      '/images/koruklu_tente_1790268976928.jpg'
     ],
-    description: 'Yüksek gerilimli alüminyum yay kolları ve geniş cephe opsiyonlarıyla bahçe, teras ve işletmeler için pratik, ekonomik ve şık bir gölgelendirme standardı oluşturur.',
+    description: 'Yüksek gerilimli alüminyum enjeksiyon kollar ve birinci sınıf solmaz akrilik kumaş ile üretilen mafsallı tente sistemleri, dükkan önleri, restoranlar ve geniş teraslar için en pratik ve güvenilir çözümdür.',
     features: [
-      'Yüksek Mukavemetli Çelik Yaylı Mafsal Kolları',
-      'Su İtici & Küf Tutmaz Nano Kumaş Teknolojisi',
-      'Eğim Açısı Manuel veya Motorla Kolayca Ayarlanabilir',
-      'Çift Açılır (T-Model) Bağımsız Ayaklı Çözüm Opsiyonu',
-      'Geniş Renk & Desen Kartelası',
-      'Rüzgar Titreşim Sensörü Uyumluluğu'
+      'Yüksek Mukavemetli Çift Çelik Halatlı Mafsal Kolları',
+      'Su İtici, Solmaz İthal Dickson Akrilik Kumaş Teknolojisi',
+      '0-45 Derece Ayarlanabilir Kademeli Eğim Açısı',
+      'Manuel Kol veya Somfy Motor & Uzaktan Kumanda Seçeneği',
+      'Geniş Renk & Çizgili / Düz Desen Kartelası',
+      'Rüzgar Titreşim Güvenlik Sensörü Entegrasyonu'
     ],
     specs: [
-      { label: 'Cephe Genişliği', value: '2000 mm - 6000 mm arası' },
+      { label: 'Cephe Genişliği', value: '2000 mm - 7000 mm (Tek Parça)' },
       { label: 'İleri Açılım', value: '1500 mm - 3500 mm' },
-      { label: 'Kumaş', value: 'Avrupa İthal Akrilik (Solmazlık Garantili)' },
-      { label: 'Boya', value: 'Elektrostatik Fırın Boya (İstenilen RAL Rengi)' },
-      { label: 'Mekanizma', value: 'Zincirli / Çelik Halatlı Kol Sistemi' }
+      { label: 'Kumaş', value: 'Avrupa İthal Akrilik (300 gr/m², 5 Yıl Garantili)' },
+      { label: 'Boya', value: 'Elektrostatik Toz Fırın Boya (Tüm RAL Kodları)' },
+      { label: 'Mekanizma', value: 'Çelik Halatlı / Zincirli Güçlendirilmiş Kol' },
+      { label: 'Motor & Kontrol', value: 'Somfy / Becker Motor ve Acil Durum Redüktörü' }
     ],
-    idealFor: ['Müstakil Ev Bahçeleri', 'Ticari Dükkanlar', 'Havuz Kenarları', 'Geniş Teraslar'],
+    idealFor: ['Ticari Dükkan ve Mağaza Önleri', 'Cafe & Restoran Girişleri', 'Müstakil Villa Verandaları', 'Geniş Balkonlar'],
+    warrantyYears: 5,
+    motorType: 'Somfy / Becker Akıllı Motor veya Manuel'
+  },
+  {
+    id: 'motorlu-stor-perde',
+    title: 'Motorlu Dış Cephe Stor & Zip Perde',
+    subtitle: 'Dikey Güneş Kırıcı, Rüzgar ve Mahremiyet Kalkanı',
+    tag: 'Yeni Nesil Çözüm',
+    image: '/images/motorlu_store_perde_1790269405082.jpg',
+    galleryImages: [
+      '/images/motorlu_store_perde_1790269405082.jpg',
+      '/images/seffaf_kaplama_1790269014129.jpg',
+      '/images/sasirtma_pergola_1790269026014.jpg'
+    ],
+    description: 'Bina dış cephelerine, pergola yanlarına ve geniş cam pencerelere uygulanan motorlu dikey stor perde sistemleri; güneşin yakıcı ısısını dışarıda tutar, rüzgarı keser ve içeriden dışarısının net görünmesini sağlarken mahremiyet kazandırır.',
+    features: [
+      'Somfy / Becker Akıllı Motor ve Uzaktan Kumanda Entegrasyonu',
+      'Serge Ferrari Soltis Mikro Perfore Güneş Kırıcı Kumaş',
+      'Fermuarlı (Zip) Yan Kılavuz Kanalları ile 120 km/s Rüzgara Dayanım',
+      'Kompakt Ekstrüzyon Alüminyum Üst Kaset Kutusu',
+      'İçeriden Manzarayı Kapatmayan, Dışarıdan Görünümü Engelleyen Doku',
+      'Güneş & Rüzgar Otomasyon Sensörleri ile Otomatik Çalışma'
+    ],
+    specs: [
+      { label: 'Kumaş Türü', value: 'Serge Ferrari Soltis 86 / 92 & Serge Ferrari Mikro Perfore' },
+      { label: 'Maksimum Ebat', value: 'Genişlik: 5500 mm | Yükseklik: 4500 mm' },
+      { label: 'Rüzgar Direnci', value: '120 km/s (Fermuarlı Kilit Sistemi)' },
+      { label: 'Isı Yalıtımı', value: '%85-92 Güneş Isısı Engelleme (Enerji Tasarrufu)' },
+      { label: 'Kaset Ölçüsü', value: '95 mm / 125 mm Yuvarlak veya Köşeli Alüminyum Kaset' },
+      { label: 'Kontrol', value: 'Somfy IO / RTS Uzaktan Kumanda ve Akıllı Ev Entegrasyonu' }
+    ],
+    idealFor: ['Villa Teras & Balkon Kapatma', 'Pergola & Kamelya Yanları', 'Plaza & Ofis Cam Cepheleri', 'Restoran & Cafe Bahçeleri'],
+    warrantyYears: 5,
+    motorType: 'Somfy Radyo Alıcılı Dikey Motor'
+  },
+  {
+    id: 'koruklu-tente',
+    title: 'Dekoratif Körüklü & Karpuz Tente',
+    subtitle: 'Nostaljik ve Şık Fransız Tarzı Pencere & Kapı Gölgeliği',
+    tag: 'Zarif & Estetik',
+    image: '/images/koruklu_tente_1790268976928.jpg',
+    galleryImages: [
+      '/images/koruklu_tente_1790268976928.jpg',
+      '/images/kahvecin_mafsalli_tente_1790269771116.jpg',
+      '/images/kasetli_tente_1790268955447.jpg'
+    ],
+    description: 'Pencereler, butik girişleri, tiny house ve oteller için yanlardan gelen eğimli güneş ışınlarını da kesen akordeon körük mekanizmalı zarif tente mimarisi.',
+    features: [
+      'Akordeon Katlanabilir Alüminyum İskelet Sistemi',
+      'Yan Açılardan Gelen Güneşi ve Yağmuru %100 Engelleme',
+      'İpli Manuel veya Motorlu Açma / Kapama Mekanizması',
+      'Özel Saçak ve Kurumsal Logo Baskı Seçeneği',
+      'Solmaz İthal Akrilik veya Su Geçirmez Branda Kumaş',
+      'Paslanmaz Bağlantı Elemanları ve Mafsal Parçaları'
+    ],
+    specs: [
+      { label: 'Genişlik Ölçüsü', value: '1000 mm - 5000 mm arası özel üretim' },
+      { label: 'Açılım Mesafesi', value: '600 mm - 1400 mm' },
+      { label: 'Kumaş Seçenekleri', value: 'Avrupa Akrilik / PVC Kaplamalı İthal Branda' },
+      { label: 'İskelet', value: 'Ekstrüzyon Alüminyum Körük Profilleri' },
+      { label: 'Kontrol', value: 'İpli Çekme Sistemi veya Somfy Tüp Motor' }
+    ],
+    idealFor: ['Butik Otel & Cafe Pencereleri', 'Tiny House & Ahşap Evler', 'Villa Giriş Kapıları', 'Mağaza Vitrinleri'],
     warrantyYears: 3,
-    motorType: 'Somfy / Becker / Manuel Seçenek'
+    motorType: 'Manuel İpli veya Somfy Motorlu'
   },
   {
     id: 'giyotin-cam-zip-perde',
-    title: 'Otomatik Giyotin Cam & Zip Perde',
+    title: 'Otomatik Giyotin Cam & Şeffaf Kış Kapama',
     subtitle: 'Dikey Hareketli Akıllı Rüzgar ve Manzara Kalkanı',
     tag: 'Modern Mimari',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/seffaf_kaplama_1790269014129.jpg',
     galleryImages: [
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80'
+      '/images/seffaf_kaplama_1790269014129.jpg',
+      '/images/jut_sasirtma_1790269003627.jpg',
+      '/images/sasirtma_pergola_1790269026014.jpg'
     ],
-    description: 'Tek bir tuşla yukarıdan aşağıya veya aşağıdan yukarıya kayan silinebilir giyotin cam ve fermuarlı rüzgar kesici Zip Perde sistemleri ile açık alanlarınızı konforlu bir iç mekana çevirin.',
+    description: 'Tek bir tuşla yukarıdan aşağıya veya aşağıdan yukarıya kayan silinebilir giyotin cam ve fermuarlı kış koruma sistemleri ile açık alanlarınızı konforlu bir iç mekana çevirin.',
     features: [
       '8mm veya Isıcamlı (4+12+4) Temperli Güvenlik Camı',
       'Triger Kayışlı veya Çelik Zincirli Ağır Yük Taşıma Mekanizması',
       'Silinebilir Cam Tasarımı (Kolay Temizleme Modu)',
-      'Zip Perdede 120 km/s Rüzgara Dayanıklı Fermuarlı Kılavuz Kanalları',
+      'Şeffaf Mika ve Fermuarlı Kış Bahçesi Yalıtım Çözümleri',
       'Isı, Ses ve Yağmur Yalıtımlı Çift Fitil Sistemi',
       'Dokunmatik Buton ve Mobil Uygulama Desteği'
     ],
     specs: [
       { label: 'Cam Seçenekleri', value: '8mm Temperli / 4+16+4 Konfor Isıcam' },
       { label: 'Maksimum Panel Ölçüsü', value: 'Genişlik: 4000 mm | Yükseklik: 3500 mm' },
-      { label: 'Zip Kumaş', value: 'Serge Ferrari Soltis / Sunworker Micro Perfore' },
+      { label: 'Kumaş / Mika', value: 'Japon Şeffaf Kristal Mika & Serge Ferrari Kumaş' },
       { label: 'Sızdırmazlık', value: 'EPDM Kauçuk Fitil & Kıl Fitil Kombinasyonu' },
       { label: 'Motor Gücü', value: '120Nm Ağır Hizmet Tipi Somfy Motor' }
     ],
@@ -128,18 +194,19 @@ export const PRODUCTS: ProductModel[] = [
   },
   {
     id: 'rolling-roof-kis-bahcesi',
-    title: 'Rolling Roof & Lüks Kış Bahçesi',
+    title: 'Rolling Roof & Jüt Gölgelendirme',
     subtitle: 'Tamamen Açılabilir Panoramik Tavan & Yalıtımlı Yaşam Alanı',
     tag: 'Mimari Başyapıt',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/jut_sasirtma_1790269003627.jpg',
     galleryImages: [
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80'
+      '/images/jut_sasirtma_1790269003627.jpg',
+      '/images/golgelendirme_yelken_1790268989436.jpg',
+      '/images/sasirtma_pergola_1790269026014.jpg'
     ],
-    description: 'Dünyada hem toplanma hem katlanma hareketini bir arada sunan Rolling Roof tavan sistemi ve ısı yalıtımlı alüminyum doğramalarla tasarlanan lüks kış bahçesi projeleri.',
+    description: 'Dünyada hem toplanma hem katlanma hareketini bir arada sunan Rolling Roof tavan sistemi ve ahşap pergola üzeri jüt şaşırtma kumaş uygulamalarıyla tasarlanan ayrıcalıklı yaşam alanları.',
     features: [
       'Hem Dönme (Hava Alma) Hem de Tam Geriye Toplanma Özelliği',
-      'Isı Yalıtımlı Alüminyum Gövde ve Çift Camlı Çatı Opsiyonu',
+      'Doğal Jüt Kumaş ve Şaşırtma Gölgelendirme Opsiyonları',
       'Çatı Üstü Temizliğini İçeriden Kolayca Yapabilme İmkânı',
       'Gizli Entegre Isıtma (Infrared) ve Akıllı Ses Sistemi Yuvaları',
       'Özel Renk Seçenekleri (Ahşap Desen Transferi veya Özel RAL)',
@@ -161,51 +228,67 @@ export const PRODUCTS: ProductModel[] = [
 export const SHOWCASE_PROJECTS: ProjectShowcase[] = [
   {
     id: 'prj-1',
-    title: 'Bodrum Cennet Koyu Villa Projesi',
+    title: 'Bodrum Sahil Şaşırtma Tavan Projesi',
     category: 'villa',
     location: 'Bodrum, Muğla',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80',
-    system: 'Bioklimatik Pergola & Giyotin Cam'
+    image: '/images/sasirtma_pergola_1790269026014.jpg',
+    system: 'Şaşırtma Kumaş Tavan Gölgelendirme'
   },
   {
     id: 'prj-2',
-    title: 'Boğaz Manzaralı Lounge & Restoran',
-    category: 'restoran',
-    location: 'Bebek, İstanbul',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
-    system: 'Rolling Roof & Dimmable LED'
+    title: 'Alaçatı Havuz Başı Jüt Şaşırtma Pergola',
+    category: 'villa',
+    location: 'Alaçatı, İzmir',
+    image: '/images/jut_sasirtma_1790269003627.jpg',
+    system: 'Ahşap Pergola & Jüt Şaşırtma'
   },
   {
     id: 'prj-3',
-    title: 'Çeşme Marina Residence Terası',
+    title: 'Kuşadası Sahil Rezidans Kasetli Tente',
     category: 'teras',
-    location: 'Çeşme, İzmir',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
-    system: 'Tam Kasetli Lüks Tente'
+    location: 'Kuşadası, Aydın',
+    image: '/images/kasetli_tente_1790268955447.jpg',
+    system: 'Tam Kasetli Motorlu Tente'
   },
   {
     id: 'prj-4',
-    title: 'Beykoz Konakları Kış Bahçesi',
-    category: 'villa',
-    location: 'Beykoz, İstanbul',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80',
-    system: 'Isıcamlı Kış Bahçesi & Zip Perde'
+    title: 'Bahçe Kamelya Şeffaf Kış Kaplama',
+    category: 'teras',
+    location: 'Selçuk, İzmir',
+    image: '/images/seffaf_kaplama_1790269014129.jpg',
+    system: 'Şeffaf Mika Branda Kış Bahçesi'
   },
   {
     id: 'prj-5',
-    title: 'Göktürk Doğa Evleri Bahçe Gölgelendirme',
+    title: 'Tiny House Özel Körüklü Karpuz Tente',
     category: 'villa',
-    location: 'Eyüp, İstanbul',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
-    system: 'Bioklimatik Pergola Sistem'
+    location: 'Urla, İzmir',
+    image: '/images/koruklu_tente_1790268976928.jpg',
+    system: 'Pencere & Kapı Üstü Körüklü Tente'
   },
   {
     id: 'prj-6',
-    title: 'Karaköy Butik Otel Teras Katı',
+    title: 'Havuz Başı Asma Germe Gölgelendirme',
     category: 'ticari',
-    location: 'Karaköy, İstanbul',
-    image: 'https://images.unsplash.com/photo-1519643381401-22c77e60520e?auto=format&fit=crop&w=800&q=80',
-    system: 'Geri Çekilebilir Kaset Tente'
+    location: 'Çeşme, İzmir',
+    image: '/images/golgelendirme_yelken_1790268989436.jpg',
+    system: 'Yelken Kumaş Mimari Gölgelik'
+  },
+  {
+    id: 'prj-7',
+    title: 'Kahvecin Cafe Mafsallı Tente',
+    category: 'restoran',
+    location: 'Namık Kemal Caddesi, İzmir',
+    image: '/images/kahvecin_mafsalli_tente_1790269771116.jpg',
+    system: 'Özel Logolu Klasik Mafsallı Tente'
+  },
+  {
+    id: 'prj-8',
+    title: 'Modern Villa Dış Cephe Stor & Zip Perde',
+    category: 'villa',
+    location: 'Urla / Kekliktepe, İzmir',
+    image: '/images/motorlu_store_perde_1790269405082.jpg',
+    system: 'Motorlu Dış Cephe Stor Perde'
   }
 ];
 

@@ -87,8 +87,9 @@ export const WhyUs: React.FC = () => {
           >
             <div className="relative rounded-2xl overflow-hidden border border-[#C5A880]/30 shadow-2xl shadow-black/80 group">
               <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                src="/images/kasetli_tente_1790268955447.jpg"
                 alt="Rüzgar Tente Üretim ve Mimari İşçilik"
+                referrerPolicy="no-referrer"
                 className="w-full h-[360px] sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />

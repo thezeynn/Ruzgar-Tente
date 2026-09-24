@@ -17,9 +17,10 @@ export const Hero: React.FC<HeroProps> = () => {
       {/* Background Image with Deep Cinematic Gradient & Luxury Vignette */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=85"
+          src="/images/sasirtma_pergola_1790269026014.jpg"
           alt="Lüks Bioklimatik Pergola ve Açık Hava Yaşam Alanı"
-          className="w-full h-full object-cover object-center brightness-[0.75] contrast-[1.05]"
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover object-center brightness-[0.7] contrast-[1.05]"
         />
         {/* Gradients */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#08080B] via-[#08080B]/70 to-[#08080B]/40" />

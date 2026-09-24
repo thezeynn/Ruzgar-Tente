@@ -79,6 +79,7 @@ export const GallerySection: React.FC = () => {
                 <img
                   src={project.image}
                   alt={project.title}
+                  referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
@@ -130,6 +131,7 @@ export const GallerySection: React.FC = () => {
             <img
               src={lightboxProject.image}
               alt={lightboxProject.title}
+              referrerPolicy="no-referrer"
               className="w-full h-[450px] object-cover"
             />
 

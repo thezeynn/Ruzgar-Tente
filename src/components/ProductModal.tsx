@@ -67,6 +67,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                   <img
                     src={product.image}
                     alt={product.title}
+                    referrerPolicy="no-referrer"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
@@ -82,7 +83,12 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 <div className="grid grid-cols-3 gap-2">
                   {product.galleryImages.map((img, idx) => (
                     <div key={idx} className="h-16 rounded-lg overflow-hidden border border-white/10">
-                      <img src={img} alt={`${product.title} ${idx + 1}`} className="w-full h-full object-cover" />
+                      <img
+                        src={img}
+                        alt={`${product.title} ${idx + 1}`}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   ))}
                 </div>

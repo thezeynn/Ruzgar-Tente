@@ -220,19 +220,36 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
             <div className="p-6 border-t border-white/10 bg-[#0D0E12] space-y-3 pb-12">
               <a
                 href={`tel:${currentPhone.raw}`}
-                className="flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl bg-white/5 border border-white/10 text-white font-medium text-sm hover:border-[#C5A880]/50"
+                className="flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl bg-white/5 border border-white/10 text-white font-medium text-sm hover:border-[#C5A880]/50 transition-all duration-300 group"
               >
-                <Phone className="w-4 h-4 text-[#C5A880]" />
-                <span>Hemen Ara: {currentPhone.phone}</span>
+                <div className="w-6 h-6 rounded-full bg-[#C5A880]/20 flex items-center justify-center text-[#C5A880] group-hover:bg-[#C5A880] group-hover:text-black transition-colors shrink-0">
+                  <Phone className="w-3.5 h-3.5 animate-pulse" />
+                </div>
+                <div className="flex items-center gap-2 overflow-hidden">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentPhone.phone}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25 }}
+                      className="flex items-center gap-1.5"
+                    >
+                      <span className="text-gray-400 text-xs">{currentPhone.label}:</span>
+                      <span className="font-bold text-white tracking-wide text-sm">{currentPhone.phone}</span>
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </a>
+
               <a
                 href={`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${encodeURIComponent(CONTACT_INFO.whatsappDefaultMsg)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl bg-[#25D366] text-black font-bold text-sm shadow-lg shadow-emerald-500/20"
+                className="flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl bg-[#25D366] text-black font-bold text-sm shadow-lg shadow-emerald-500/20 hover:brightness-105 transition-all"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>WhatsApp Hızlı Danışma</span>
+                <span>WhatsApp Danışma ({CONTACT_INFO.whatsapp})</span>
               </a>
             </div>
           </motion.div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Phone, 
@@ -16,7 +16,7 @@ import {
   Layers
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { CONTACT_INFO, PRODUCTS } from '../data/products';
+import { CONTACT_INFO, PRODUCTS, ROTATING_PHONES } from '../data/products';
 import { MaskedHeading } from './MaskedHeading';
 
 interface ContactSectionProps {
@@ -34,6 +34,17 @@ const POPULAR_MODELS = [
 ];
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProduct }) => {
+  const [activePhoneIndex, setActivePhoneIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActivePhoneIndex((prev) => (prev + 1) % ROTATING_PHONES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const currentPhone = ROTATING_PHONES[activePhoneIndex] || ROTATING_PHONES[0];
+
   const [prevPreselected, setPrevPreselected] = useState(preselectedProduct);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -194,21 +205,37 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
 
               {/* Direct Communication Channels */}
               <div className="space-y-2.5 sm:space-y-3 relative z-10">
-                {/* Phone */}
+                {/* Rotating Phone Card */}
                 <a
-                  href={`tel:${CONTACT_INFO.phoneRaw}`}
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#181A24] hover:bg-[#1F2230] border border-white/5 hover:border-[#C5A880]/40 transition-colors duration-200 group shadow-sm"
+                  href={`tel:${currentPhone.raw}`}
+                  className="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#181A24] hover:bg-[#1F2230] border border-white/5 hover:border-[#C5A880]/40 transition-all duration-300 group shadow-sm"
+                  title={`${currentPhone.label}: ${currentPhone.phone}`}
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#C5A880]/15 border border-[#C5A880]/20 flex items-center justify-center text-[#C5A880] group-hover:bg-[#C5A880]/25 transition-colors duration-200 shrink-0">
-                    <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" />
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <span className="text-[11px] sm:text-xs text-gray-400 block">Doğrudan Keşif & Danışma</span>
-                    <span className="font-sans text-sm sm:text-base font-bold text-white group-hover:text-[#C5A880] transition-colors tracking-wide">
-                      {CONTACT_INFO.phone}
-                    </span>
+                  <div className="min-w-0 flex-1 overflow-hidden">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={currentPhone.phone}
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.25 }}
+                      >
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[11px] sm:text-xs text-gray-400 block font-medium">
+                            {currentPhone.label}
+                          </span>
+                          <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-pulse" />
+                        </div>
+                        <span className="font-sans text-sm sm:text-base font-bold text-white group-hover:text-[#C5A880] transition-colors tracking-wide block mt-0.5">
+                          {currentPhone.phone}
+                        </span>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
-                  <div className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-[#C5A880] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#C5A880] group-hover:translate-x-1 transition-all">
                     <span>Hemen Ara</span>
                     <ArrowRight className="w-3 h-3" />
                   </div>
@@ -219,7 +246,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
                   href={`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${encodeURIComponent(CONTACT_INFO.whatsappDefaultMsg)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#181A24] hover:bg-[#1F2230] border border-[#25D366]/25 hover:border-[#25D366] transition-colors duration-200 group shadow-sm"
+                  className="flex items-center gap-3 sm:gap-4 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#181A24] hover:bg-[#1F2230] border border-[#25D366]/25 hover:border-[#25D366] transition-colors duration-200 group shadow-sm"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#25D366]/15 border border-[#25D366]/20 flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366]/25 transition-colors duration-200 shrink-0">
                     <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -230,10 +257,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
                       <span className="inline-block w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
                     </div>
                     <span className="font-sans text-sm sm:text-base font-bold text-white group-hover:text-[#25D366] transition-colors tracking-wide">
-                      {CONTACT_INFO.mobile}
+                      {CONTACT_INFO.whatsapp}
                     </span>
                   </div>
-                  <div className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-[#25D366] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#25D366] group-hover:translate-x-1 transition-all">
                     <span>Mesaj Yaz</span>
                     <ArrowRight className="w-3 h-3" />
                   </div>

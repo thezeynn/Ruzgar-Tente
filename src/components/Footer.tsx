@@ -87,11 +87,16 @@ export const Footer: React.FC = () => {
                 <MapPin className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{CONTACT_INFO.address}</span>
               </li>
-              <li className="flex items-center justify-center sm:justify-start gap-2.5">
-                <Phone className="w-4 h-4 text-[#C5A880] shrink-0" />
-                <a href={`tel:${CONTACT_INFO.phoneRaw}`} className="hover:text-white transition-colors">
-                  {CONTACT_INFO.phone}
-                </a>
+              <li className="flex items-start justify-center sm:justify-start gap-2.5">
+                <Phone className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
+                <div className="flex flex-col gap-1">
+                  <a href={`tel:${CONTACT_INFO.phoneRaw}`} className="hover:text-white transition-colors">
+                    {CONTACT_INFO.phone}
+                  </a>
+                  <a href={`tel:${CONTACT_INFO.phone2Raw}`} className="hover:text-white transition-colors text-gray-400">
+                    {CONTACT_INFO.phone2}
+                  </a>
+                </div>
               </li>
               <li className="flex items-center justify-center sm:justify-start gap-2.5">
                 <Mail className="w-4 h-4 text-[#C5A880] shrink-0" />

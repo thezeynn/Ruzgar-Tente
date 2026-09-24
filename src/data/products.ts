@@ -469,17 +469,20 @@ export const STATS = [
 
 export const ROTATING_PHONES = [
   { label: 'İletişim & Keşif', phone: '0535 704 33 43', raw: '+905357043343' },
-  { label: 'Mimari Danışma', phone: '0532 450 60 70', raw: '+905324506070' },
-  { label: 'Teknik Destek', phone: '0535 704 33 44', raw: '+905357043344' },
+  { label: 'Danışma & Sipariş', phone: '0553 891 55 19', raw: '+905538915519' },
 ];
 
 export const CONTACT_INFO = {
   phone: '0535 704 33 43',
   phoneRaw: '+905357043343',
+  phone2: '0553 891 55 19',
+  phone2Raw: '+905538915519',
   mobile: '0535 704 33 43',
   mobileRaw: '+905357043343',
   whatsapp: '0535 704 33 43',
   whatsappRaw: '905357043343',
+  whatsapp2: '0553 891 55 19',
+  whatsapp2Raw: '905538915519',
   whatsappDefaultMsg: 'Merhaba Rüzgar Tente, tente ve pergola sistemleri hakkında detaylı bilgi ve fiyat teklifi almak istiyorum.',
   email: 'info@ruzgartente.com',
   address: 'Cumhuriyet, 5205 sk no:31, 35920 Selçuk / İzmir',

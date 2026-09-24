@@ -12,7 +12,7 @@ export const Hero: React.FC<HeroProps> = () => {
   return (
     <section
       id="anasayfa"
-      className="relative min-h-[90vh] sm:min-h-[96vh] flex items-center justify-center pt-28 sm:pt-36 pb-20 sm:pb-28 overflow-hidden bg-[#08080B] border-b border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] z-10"
+      className="relative min-h-[82vh] sm:min-h-[96vh] flex items-center justify-center pt-24 sm:pt-36 pb-16 sm:pb-28 overflow-hidden bg-[#08080B] border-b border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)] z-10"
     >
       {/* Background Image with Deep Cinematic Gradient & Luxury Vignette */}
       <div className="absolute inset-0 z-0">
@@ -32,12 +32,12 @@ export const Hero: React.FC<HeroProps> = () => {
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-[#C5A880]/12 blur-[150px] rounded-full pointer-events-none" />
 
       {/* Main Content Container */}
-      <div className="relative z-10 max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center py-6 sm:py-10">
+      <div className="relative z-10 max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center py-4 sm:py-10">
         
         {/* Main Headline with Creatix Style Masked Line Reveal */}
         <MaskedHeading
           as="h1"
-          className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.15] mb-6 max-w-4xl mx-auto drop-shadow-md"
+          className="font-display text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.18] mb-4 sm:mb-6 max-w-4xl mx-auto drop-shadow-md"
           lines={[
             'Açık Alanlarınızı',
             'Dört Mevsim Yaşam Alanına',
@@ -53,7 +53,7 @@ export const Hero: React.FC<HeroProps> = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="text-xs sm:text-base md:text-lg text-gray-300 font-sans font-light leading-relaxed max-w-2xl mx-auto mb-10"
+          className="text-xs sm:text-base md:text-lg text-gray-300 font-sans font-light leading-relaxed max-w-2xl mx-auto mb-6 sm:mb-10 px-2 sm:px-0"
         >
           Müstakil villalar, teraslar, lüks cafe ve restoranlar için yüksek mühendislik standardında üretilen Somfy motorlu bioklimatik pergolalar, kasetli tenteler ve yalıtımlı kış bahçeleri.
         </motion.p>
@@ -63,11 +63,11 @@ export const Hero: React.FC<HeroProps> = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-md mx-auto"
+          className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-4 w-full max-w-md mx-auto"
         >
           <a
             href="#modeller"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-gray-200 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all cursor-pointer shadow-lg"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 sm:px-7 sm:py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-gray-200 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all cursor-pointer shadow-lg"
           >
             <ArrowRight className="w-4 h-4 text-[#C5A880]" />
             <span>Modelleri İncele</span>
@@ -77,7 +77,7 @@ export const Hero: React.FC<HeroProps> = () => {
             href={`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${encodeURIComponent(CONTACT_INFO.whatsappDefaultMsg)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-gray-200 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all cursor-pointer shadow-lg"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 sm:px-7 sm:py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-gray-200 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all cursor-pointer shadow-lg"
           >
             <MessageCircle className="w-4 h-4 text-[#25D366]" />
             <span>WhatsApp Hızlı Teklif</span>

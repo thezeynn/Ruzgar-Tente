@@ -34,17 +34,17 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
   };
 
   return (
-    <section id="modeller" className="py-24 bg-[#0D0E12] relative overflow-hidden">
+    <section id="modeller" className="py-14 sm:py-24 bg-[#0D0E12] relative overflow-hidden">
       {/* Background Ambience */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C5A880]/5 blur-[160px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#8E6B3B]/5 blur-[140px] rounded-full pointer-events-none" />
 
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <MaskedHeading
             as="h2"
-            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4"
             lines={[
               'Üstün Mühendislik &',
               <span key="gold" className="text-gold-gradient font-serif italic font-normal">
@@ -52,7 +52,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
               </span>,
             ]}
           />
-          <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
+          <p className="text-xs sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
             Her mekana özel milimetrik projelendirilen, birinci sınıf alüminyum ve Somfy motor güvencesiyle uzun yıllar ilk günkü konforu sunan tente ve gölgelendirme sistemleri.
           </p>
         </div>
@@ -63,7 +63,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
         >
           {PRODUCTS.map((product) => (
             <motion.div
@@ -72,7 +72,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
               className="group relative rounded-2xl bg-[#14151C] border border-white/5 hover:border-[#C5A880]/40 transition-all duration-500 overflow-hidden flex flex-col justify-between hover:shadow-2xl hover:shadow-[#C5A880]/10"
             >
               {/* Image Container with Hover Zoom */}
-              <div className="relative h-64 overflow-hidden bg-black/40">
+              <div className="relative h-52 sm:h-64 overflow-hidden bg-black/40">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -94,12 +94,12 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
               </div>
 
               {/* Card Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-3 sm:space-y-4">
                 <div>
-                  <h3 className="font-display text-xl font-bold text-white group-hover:text-[#E8D5B5] transition-colors">
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white group-hover:text-[#E8D5B5] transition-colors leading-snug">
                     {product.title}
                   </h3>
-                  <p className="text-xs font-serif italic text-[#C5A880] mt-0.5 mb-3">
+                  <p className="text-xs font-serif italic text-[#C5A880] mt-0.5 mb-2 sm:mb-3">
                     {product.subtitle}
                   </p>
                   <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed">

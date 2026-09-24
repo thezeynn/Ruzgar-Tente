@@ -23,13 +23,13 @@ export const GallerySection: React.FC = () => {
     : SHOWCASE_PROJECTS.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projeler" className="py-24 bg-[#08080B] relative overflow-hidden">
+    <section id="projeler" className="py-14 sm:py-24 bg-[#08080B] relative overflow-hidden">
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
           <MaskedHeading
             as="h2"
-            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4"
             lines={[
               'Uyguladığımız',
               <span key="gold" className="text-gold-gradient font-serif italic font-normal">
@@ -37,18 +37,18 @@ export const GallerySection: React.FC = () => {
               </span>,
             ]}
           />
-          <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
+          <p className="text-xs sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
             Türkiye'nin dört bir yanındaki seçkin villa, otel, teras ve restoran projelerimizden ilham verici uygulamalar.
           </p>
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 mb-8 sm:mb-12">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2 rounded-full text-xs font-semibold tracking-wider transition-all duration-300 ${
+              className={`px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider transition-all duration-300 ${
                 activeCategory === cat.id
                   ? 'bg-gradient-to-r from-[#C5A880] to-[#D4AF37] text-black shadow-lg shadow-[#C5A880]/20 scale-105'
                   : 'bg-[#181920] text-gray-400 hover:text-white border border-white/5 hover:border-white/10'
@@ -62,7 +62,7 @@ export const GallerySection: React.FC = () => {
         {/* Project Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           <AnimatePresence>
             {filteredProjects.map((project) => (
@@ -73,7 +73,7 @@ export const GallerySection: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
-                className="group relative h-80 rounded-2xl overflow-hidden border border-white/10 bg-[#14151C] cursor-pointer"
+                className="group relative h-64 sm:h-80 rounded-2xl overflow-hidden border border-white/10 bg-[#14151C] cursor-pointer"
                 onClick={() => setLightboxProject(project)}
               >
                 <img

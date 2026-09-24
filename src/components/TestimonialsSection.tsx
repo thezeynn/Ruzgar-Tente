@@ -33,17 +33,17 @@ export const TestimonialsSection: React.FC = () => {
   );
 
   return (
-    <section className="py-24 bg-[#0D0E12] relative overflow-hidden border-t border-white/5">
+    <section className="py-14 sm:py-24 bg-[#0D0E12] relative overflow-hidden border-t border-white/5">
       {/* Background Ambience */}
       <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#C5A880]/5 blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-[#8E6B3B]/5 blur-[140px] rounded-full pointer-events-none" />
 
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <MaskedHeading
             as="h2"
-            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4"
             lines={[
               'Seçkin Mimar ve',
               <span key="gold" className="text-gold-gradient font-serif italic font-normal">
@@ -51,14 +51,14 @@ export const TestimonialsSection: React.FC = () => {
               </span>,
             ]}
           />
-          <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
+          <p className="text-xs sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
             Tamamladığımız her projede estetik, fonksiyon ve kaliteden ödün vermeden sunduğumuz %100 müşteri memnuniyeti.
           </p>
         </div>
 
         {/* Testimonials Carousel Container */}
         <div
-          className="relative min-h-[380px]"
+          className="relative min-h-[280px] sm:min-h-[380px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -69,7 +69,7 @@ export const TestimonialsSection: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.45, ease: 'easeInOut' }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
             >
               {currentTestimonials.map((test) => {
                 const initials = test.name
@@ -81,7 +81,7 @@ export const TestimonialsSection: React.FC = () => {
                 return (
                   <div
                     key={test.id}
-                    className="p-7 rounded-2xl bg-[#14151C] border border-white/5 hover:border-[#C5A880]/30 transition-all duration-300 flex flex-col justify-between relative group hover:shadow-xl hover:shadow-[#C5A880]/5"
+                    className="p-5 sm:p-7 rounded-2xl bg-[#14151C] border border-white/5 hover:border-[#C5A880]/30 transition-all duration-300 flex flex-col justify-between relative group hover:shadow-xl hover:shadow-[#C5A880]/5"
                   >
                     <Quote className="w-8 h-8 text-[#C5A880]/15 absolute top-6 right-6 pointer-events-none" />
 

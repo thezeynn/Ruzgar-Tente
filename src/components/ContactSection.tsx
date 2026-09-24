@@ -154,17 +154,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
   };
 
   return (
-    <section id="iletisim" className="py-24 bg-[#08080B] relative overflow-hidden">
+    <section id="iletisim" className="py-14 sm:py-24 bg-[#08080B] relative overflow-hidden">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 -right-40 w-[600px] h-[600px] bg-[#C5A880]/8 blur-[200px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 -left-40 w-[500px] h-[500px] bg-[#C5A880]/5 blur-[180px] rounded-full pointer-events-none" />
 
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <MaskedHeading
             as="h2"
-            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4"
             lines={[
               'Ücretsiz Keşif &',
               <span key="gold" className="text-gold-gradient font-serif italic font-normal">
@@ -172,39 +172,39 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
               </span>,
             ]}
           />
-          <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-base text-gray-400 font-light max-w-2xl mx-auto leading-relaxed">
             Projenizi uzman mimarlarımızla birlikte şekillendirin. İster formu doldurarak hemen teklif isteyin, ister doğrudan arayarak ücretsiz yerinde keşif randevusu oluşturun.
           </p>
         </div>
 
         {/* 2-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
           {/* Left Column: Direct Contact & Map (5 Cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-5 sm:space-y-6">
             {/* Contact Details Card */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-[#12131A] border border-white/10 shadow-xl space-y-6 relative overflow-hidden backdrop-blur-md">
+            <div className="p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#12131A] border border-white/10 shadow-xl space-y-5 sm:space-y-6 relative overflow-hidden backdrop-blur-md">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#C5A880]/10 rounded-full blur-2xl pointer-events-none" />
 
               {/* Title */}
               <div className="relative z-10">
-                <h3 className="font-display text-lg sm:text-xl font-bold text-white">
+                <h3 className="font-display text-base sm:text-xl font-bold text-white">
                   Doğrudan İletişim Hatları
                 </h3>
               </div>
 
               {/* Direct Communication Channels */}
-              <div className="space-y-3 relative z-10">
+              <div className="space-y-2.5 sm:space-y-3 relative z-10">
                 {/* Phone */}
                 <a
                   href={`tel:${CONTACT_INFO.phoneRaw}`}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-[#181A24] hover:bg-[#1F2230] border border-white/5 hover:border-[#C5A880]/40 transition-colors duration-200 group shadow-sm"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#181A24] hover:bg-[#1F2230] border border-white/5 hover:border-[#C5A880]/40 transition-colors duration-200 group shadow-sm"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#C5A880]/15 border border-[#C5A880]/20 flex items-center justify-center text-[#C5A880] group-hover:bg-[#C5A880]/25 transition-colors duration-200 shrink-0">
-                    <Phone className="w-5 h-5" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#C5A880]/15 border border-[#C5A880]/20 flex items-center justify-center text-[#C5A880] group-hover:bg-[#C5A880]/25 transition-colors duration-200 shrink-0">
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <span className="text-xs text-gray-400 block">Doğrudan Keşif & Danışma</span>
-                    <span className="font-sans text-base font-bold text-white group-hover:text-[#C5A880] transition-colors tracking-wide">
+                    <span className="text-[11px] sm:text-xs text-gray-400 block">Doğrudan Keşif & Danışma</span>
+                    <span className="font-sans text-sm sm:text-base font-bold text-white group-hover:text-[#C5A880] transition-colors tracking-wide">
                       {CONTACT_INFO.phone}
                     </span>
                   </div>
@@ -219,17 +219,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
                   href={`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${encodeURIComponent(CONTACT_INFO.whatsappDefaultMsg)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-[#181A24] hover:bg-[#1F2230] border border-[#25D366]/25 hover:border-[#25D366] transition-colors duration-200 group shadow-sm"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#181A24] hover:bg-[#1F2230] border border-[#25D366]/25 hover:border-[#25D366] transition-colors duration-200 group shadow-sm"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#25D366]/15 border border-[#25D366]/20 flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366]/25 transition-colors duration-200 shrink-0">
-                    <MessageSquare className="w-5 h-5" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#25D366]/15 border border-[#25D366]/20 flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366]/25 transition-colors duration-200 shrink-0">
+                    <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs text-gray-400 block">7/24 WhatsApp Hızlı Danışma</span>
+                      <span className="text-[11px] sm:text-xs text-gray-400 block">7/24 WhatsApp Danışma</span>
                       <span className="inline-block w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
                     </div>
-                    <span className="font-sans text-base font-bold text-white group-hover:text-[#25D366] transition-colors tracking-wide">
+                    <span className="font-sans text-sm sm:text-base font-bold text-white group-hover:text-[#25D366] transition-colors tracking-wide">
                       {CONTACT_INFO.mobile}
                     </span>
                   </div>
@@ -242,19 +242,19 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
                 {/* Email */}
                 <a
                   href={`mailto:${CONTACT_INFO.email}`}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-[#181A24] hover:bg-[#1F2230] border border-white/5 hover:border-[#C5A880]/40 transition-colors duration-200 group shadow-sm"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-[#181A24] hover:bg-[#1F2230] border border-white/5 hover:border-[#C5A880]/40 transition-colors duration-200 group shadow-sm"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#C5A880]/15 border border-[#C5A880]/20 flex items-center justify-center text-[#C5A880] group-hover:bg-[#C5A880]/25 transition-colors duration-200 shrink-0">
-                    <Mail className="w-5 h-5" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#C5A880]/15 border border-[#C5A880]/20 flex items-center justify-center text-[#C5A880] group-hover:bg-[#C5A880]/25 transition-colors duration-200 shrink-0">
+                    <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <span className="text-xs text-gray-400 block">Kurumsal & Mimari E-Posta</span>
-                    <span className="text-sm font-semibold text-white group-hover:text-[#C5A880] transition-colors truncate block">
+                    <span className="text-[11px] sm:text-xs text-gray-400 block">Kurumsal & Proje E-Posta</span>
+                    <span className="font-sans text-xs sm:text-sm font-bold text-white group-hover:text-[#C5A880] transition-colors tracking-wide truncate block">
                       {CONTACT_INFO.email}
                     </span>
                   </div>
                   <div className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-[#C5A880] opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span>E-Posta</span>
+                    <span>Mail Gönder</span>
                     <ArrowRight className="w-3 h-3" />
                   </div>
                 </a>

@@ -13,16 +13,16 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <section id="sss" className="py-24 bg-[#08080B] relative overflow-hidden">
+    <section id="sss" className="py-14 sm:py-24 bg-[#08080B] relative overflow-hidden">
       {/* Glow Effects */}
       <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#C5A880]/5 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <MaskedHeading
             as="h2"
-            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4"
             lines={[
               'Sıkça Sorulan',
               <span key="gold" className="text-gold-gradient font-serif italic font-normal">
@@ -30,13 +30,13 @@ export const FAQSection: React.FC = () => {
               </span>,
             ]}
           />
-          <p className="text-sm sm:text-base text-gray-400 font-light max-w-xl mx-auto">
+          <p className="text-xs sm:text-base text-gray-400 font-light max-w-xl mx-auto">
             Tente, pergola kumaşları, Somfy motor garantisi ve yerinde montaj süreci hakkında en çok yöneltilen sorular.
           </p>
         </div>
 
         {/* Accordion Container */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
@@ -51,10 +51,10 @@ export const FAQSection: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => toggleAccordion(index)}
-                  className="w-full p-6 text-left flex items-start sm:items-center justify-between gap-4 transition-colors cursor-pointer group"
+                  className="w-full p-4 sm:p-6 text-left flex items-start sm:items-center justify-between gap-3 sm:gap-4 transition-colors cursor-pointer group"
                 >
                   <div className="flex-1">
-                    <span className="font-display text-base sm:text-lg font-semibold text-white group-hover:text-[#E8D5B5] transition-colors leading-snug">
+                    <span className="font-display text-sm sm:text-base md:text-lg font-semibold text-white group-hover:text-[#E8D5B5] transition-colors leading-snug">
                       {faq.question}
                     </span>
                   </div>

@@ -80,8 +80,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           isScrolled
-            ? 'py-3.5 bg-[#0D0E12]/90 backdrop-blur-xl border-b border-[#C5A880]/15 shadow-2xl shadow-black/50'
-            : 'py-6 bg-transparent'
+            ? 'py-2.5 sm:py-3.5 bg-[#0D0E12]/90 backdrop-blur-xl border-b border-[#C5A880]/15 shadow-2xl shadow-black/50'
+            : 'py-3 sm:py-6 bg-transparent'
         }`}
       >
         <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">

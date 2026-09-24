@@ -51,16 +51,16 @@ const CounterNumber: React.FC<{ target: number; suffix?: string; duration?: numb
 
 export const WhyUs: React.FC = () => {
   return (
-    <section id="neden-biz" className="py-24 bg-[#08080B] relative overflow-hidden">
+    <section id="neden-biz" className="py-14 sm:py-24 bg-[#08080B] relative overflow-hidden">
       {/* Glow Effects */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[450px] h-[450px] bg-[#C5A880]/10 blur-[180px] rounded-full pointer-events-none" />
 
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Top Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
           <MaskedHeading
             as="h2"
-            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4"
             lines={[
               <span key="why">
                 Neden{' '}
@@ -70,13 +70,13 @@ export const WhyUs: React.FC = () => {
               </span>,
             ]}
           />
-          <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
+          <p className="text-xs sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
             15 yılı aşkın mimari üretim deneyimimiz, Avrupa standartlarındaki hammadde tercihimiz ve kusursuz montaj anlayışımızla yaşam alanlarınıza değer katıyoruz.
           </p>
         </div>
 
         {/* Two-Column Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center mb-12 sm:mb-20">
           {/* Left Column: Workshop & Engineering Image Grid */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -90,20 +90,18 @@ export const WhyUs: React.FC = () => {
                 src="/images/kasetli_tente_1790268955447.jpg"
                 alt="Rüzgar Tente Üretim ve Mimari İşçilik"
                 referrerPolicy="no-referrer"
-                className="w-full h-[360px] sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-[280px] sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
-              {/* Floating Quality Badge on Image */}
-              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 p-3.5 sm:p-4 rounded-xl bg-[#0D0E12]/90 backdrop-blur-md border border-white/10 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[#C5A880]/20 flex items-center justify-center text-[#C5A880] shrink-0">
-                    <Award className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-white">Avrupa Normlarında Üretim</h4>
-                    <p className="text-[11px] sm:text-xs text-gray-400">Qualicoat & CE Sertifikalı Alüminyum Profiller</p>
-                  </div>
+              {/* Floating Quality Badge on Image - Narrowed down & compact */}
+              <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-5 max-w-[260px] sm:max-w-[290px] p-2 sm:p-2.5 rounded-xl bg-[#0D0E12]/90 backdrop-blur-md border border-white/10 flex items-center gap-2.5 shadow-xl">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#C5A880]/20 flex items-center justify-center text-[#C5A880] shrink-0">
+                  <Award className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="text-[11px] sm:text-xs font-bold text-white leading-tight">Avrupa Normlarında Üretim</h4>
+                  <p className="text-[9.5px] sm:text-[10.5px] text-gray-400 truncate mt-0.5">Qualicoat & CE Sertifikalı Alüminyum</p>
                 </div>
               </div>
             </div>
@@ -115,16 +113,16 @@ export const WhyUs: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-6 space-y-6"
+            className="lg:col-span-6 space-y-4 sm:space-y-6"
           >
             <div>
               <span className="text-xs uppercase tracking-widest text-[#C5A880] font-semibold">
                 Kusursuz Hizmet Süreci
               </span>
-              <h3 className="font-display text-2xl sm:text-3xl font-bold text-white mt-1 mb-4">
+              <h3 className="font-display text-xl sm:text-3xl font-bold text-white mt-1 mb-3 sm:mb-4">
                 Mimari Çözüm Ortaklığı & Anahtar Teslim Güvence
               </h3>
-              <p className="text-sm text-gray-300 leading-relaxed font-light">
+              <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-light">
                 Her mekanın rüzgar yükü, güneş açısı ve mimari dokusu farklıdır. Rüzgar Tente mühendislik ekibi mekanınıza gelerek lazerli 3D simülasyon çıkarır, en doğru ürünü sıfır hata toleransıyla üretir ve montajlar.
               </p>
             </div>

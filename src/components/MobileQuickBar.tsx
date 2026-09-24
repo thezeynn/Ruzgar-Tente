@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MessageCircle, Sparkles } from 'lucide-react';
+import { Phone, MessageCircle, FileText } from 'lucide-react';
 import { CONTACT_INFO } from '../data/products';
 
 interface MobileQuickBarProps {
@@ -35,7 +35,7 @@ export const MobileQuickBar: React.FC<MobileQuickBarProps> = ({ onOpenQuote }) =
         onClick={onOpenQuote}
         className="flex-1 flex items-center justify-center gap-1.5 py-3 px-2 rounded-xl bg-gradient-to-r from-[#FFF0DC] via-[#C5A880] to-[#D4AF37] text-black text-xs font-bold"
       >
-        <Sparkles className="w-3.5 h-3.5" />
+        <FileText className="w-3.5 h-3.5" />
         <span>Teklif Al</span>
       </button>
     </div>

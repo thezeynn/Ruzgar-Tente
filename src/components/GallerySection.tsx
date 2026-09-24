@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Sparkles, X, Eye } from 'lucide-react';
+import { MapPin, X, Eye } from 'lucide-react';
 import { SHOWCASE_PROJECTS, CONTACT_INFO } from '../data/products';
 import type { ProjectShowcase } from '../types';
+import { MaskedHeading } from './MaskedHeading';
 
 
 export const GallerySection: React.FC = () => {
@@ -23,19 +24,19 @@ export const GallerySection: React.FC = () => {
 
   return (
     <section id="projeler" className="py-24 bg-[#08080B] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#181920] border border-[#C5A880]/20 mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A880]" />
-            <span className="text-xs uppercase tracking-widest text-[#E8D5B5] font-semibold">
-              Referanslarımız & Galeri
-            </span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4">
-            Uyguladığımız <br />
-            <span className="text-gold-gradient font-serif italic font-normal">Mimari Başyapıtlar</span>
-          </h2>
+          <MaskedHeading
+            as="h2"
+            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            lines={[
+              'Uyguladığımız',
+              <span key="gold" className="text-gold-gradient font-serif italic font-normal">
+                Mimari Başyapıtlar
+              </span>,
+            ]}
+          />
           <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
             Türkiye'nin dört bir yanındaki seçkin villa, otel, teras ve restoran projelerimizden ilham verici uygulamalar.
           </p>

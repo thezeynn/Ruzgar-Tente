@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Award, ShieldCheck, Cpu, Layers, Sparkles, ThumbsUp } from 'lucide-react';
+import { Award, ShieldCheck, Cpu, Layers, ThumbsUp } from 'lucide-react';
 import { STATS } from '../data/products';
+import { MaskedHeading } from './MaskedHeading';
 
 // Ekrana girince akıcı sayan Sayaç Bileşeni
 const CounterNumber: React.FC<{ target: number; suffix?: string; duration?: number }> = ({
@@ -54,18 +55,21 @@ export const WhyUs: React.FC = () => {
       {/* Glow Effects */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[450px] h-[450px] bg-[#C5A880]/10 blur-[180px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Top Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#181920] border border-[#C5A880]/20 mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A880]" />
-            <span className="text-xs uppercase tracking-widest text-[#E8D5B5] font-semibold">
-              Prestige & Güven
-            </span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4">
-            Neden <span className="text-gold-gradient">Rüzgar Tente</span>?
-          </h2>
+          <MaskedHeading
+            as="h2"
+            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            lines={[
+              <span key="why">
+                Neden{' '}
+                <span className="inline-block text-gold-gradient font-serif italic font-normal pr-3">
+                  Rüzgar Tente?
+                </span>
+              </span>,
+            ]}
+          />
           <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
             15 yılı aşkın mimari üretim deneyimimiz, Avrupa standartlarındaki hammadde tercihimiz ve kusursuz montaj anlayışımızla yaşam alanlarınıza değer katıyoruz.
           </p>
@@ -100,9 +104,6 @@ export const WhyUs: React.FC = () => {
                     <p className="text-[11px] sm:text-xs text-gray-400">Qualicoat & CE Sertifikalı Alüminyum Profiller</p>
                   </div>
                 </div>
-                <span className="hidden sm:inline-block text-xs font-bold text-[#C5A880] px-2.5 py-1 bg-[#C5A880]/10 rounded-md border border-[#C5A880]/20 shrink-0">
-                  ISO 9001
-                </span>
               </div>
             </div>
           </motion.div>

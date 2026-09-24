@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, CheckCircle2, ShieldCheck, Cpu, ArrowRight, MessageCircle, Sparkles, Wind } from 'lucide-react';
+import { X, CheckCircle2, Cpu, ArrowRight, MessageCircle, Sparkles, Wind } from 'lucide-react';
 import type { ProductModel } from '../types';
 
 import { CONTACT_INFO } from '../data/products';
@@ -45,11 +45,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({
         >
           {/* Header Bar */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#181920]">
-            <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-widest px-2.5 py-1 rounded-md bg-[#C5A880]/15 text-[#C5A880] font-semibold border border-[#C5A880]/30">
-                {product.tag}
-              </span>
-              <span className="text-xs text-gray-400 font-medium">Model İnceleme</span>
+            <div>
+              <span className="text-xs uppercase tracking-widest text-[#C5A880] font-semibold">Model İnceleme</span>
             </div>
             <button
               onClick={onClose}
@@ -73,11 +70,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
-                    <span className="flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#C5A880]" />
-                      {product.warrantyYears} Yıl Garanti
-                    </span>
+                  <div className="absolute bottom-3 right-3 flex items-center text-xs text-white">
                     <span className="flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10">
                       <Cpu className="w-3.5 h-3.5 text-[#C5A880]" />
                       {product.motorType}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, Quote, Sparkles, MapPin, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Quote, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 import { TESTIMONIALS } from '../data/products';
+import { MaskedHeading } from './MaskedHeading';
 
 export const TestimonialsSection: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -37,28 +38,22 @@ export const TestimonialsSection: React.FC = () => {
       <div className="absolute top-1/2 right-10 w-96 h-96 bg-[#C5A880]/5 blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-[#8E6B3B]/5 blur-[140px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#181920] border border-[#C5A880]/20 mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A880]" />
-            <span className="text-xs uppercase tracking-widest text-[#E8D5B5] font-semibold">
-              Müşteri Deneyimleri & Referanslar
-            </span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4">
-            Seçkin Mimar ve <br />
-            <span className="text-gold-gradient font-serif italic font-normal">Müşterilerimizin Yorumları</span>
-          </h2>
+          <MaskedHeading
+            as="h2"
+            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            lines={[
+              'Seçkin Mimar ve',
+              <span key="gold" className="text-gold-gradient font-serif italic font-normal">
+                Müşterilerimizin Yorumları
+              </span>,
+            ]}
+          />
           <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
             Tamamladığımız her projede estetik, fonksiyon ve kaliteden ödün vermeden sunduğumuz %100 müşteri memnuniyeti.
           </p>
-
-          {/* Google Verified Review Badge */}
-          <div className="inline-flex items-center gap-2 mt-4 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-gray-300">
-            <span className="text-amber-400 font-bold">★ 5.0</span>
-            <span className="text-gray-400">Google Yorumları & Doğrulanmış Proje Referansları</span>
-          </div>
         </div>
 
         {/* Testimonials Carousel Container */}
@@ -118,16 +113,9 @@ export const TestimonialsSection: React.FC = () => {
                           {initials}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-1.5">
-                            <span className="font-display text-sm font-bold text-white group-hover:text-[#C5A880] transition-colors truncate">
-                              {test.name}
-                            </span>
-                            {test.verified && (
-                              <span title="Doğrulanmış Müşteri">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
-                              </span>
-                            )}
-                          </div>
+                          <span className="font-display text-sm font-bold text-white group-hover:text-[#C5A880] transition-colors truncate block">
+                            {test.name}
+                          </span>
                           <span className="text-[11px] text-gray-400 block truncate">
                             {test.title} • {test.location}
                           </span>

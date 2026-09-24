@@ -1,0 +1,8 @@
+{
+  "name": "Rüzgar Tente",
+  "description": "Bioklimatik Pergola, Kasetli Tente ve Kış Bahçesi Sistemleri",
+  "prompt": "Rüzgar Tente - Lüks Pergola ve Tente Sistemleri web sitesi",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

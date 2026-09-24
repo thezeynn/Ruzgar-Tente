@@ -4,6 +4,7 @@ import { CONTACT_INFO } from '../data/products';
 
 export const FloatingWhatsApp: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
   const [customMsg, setCustomMsg] = useState('');
 
   const handleSend = (e: React.FormEvent) => {
@@ -14,8 +15,10 @@ export const FloatingWhatsApp: React.FC = () => {
     setCustomMsg('');
   };
 
+  if (isDismissed) return null;
+
   return (
-    <div className="hidden sm:block fixed bottom-8 right-6 z-40">
+    <div className="hidden sm:block fixed bottom-8 right-6 md:right-8 z-50">
       {/* Pop-up Chat Card */}
       {isOpen && (
         <div className="absolute bottom-16 right-0 w-80 rounded-2xl bg-[#121318] border border-[#25D366]/40 shadow-2xl shadow-black/80 overflow-hidden mb-2 animate-fadeIn">
@@ -99,21 +102,37 @@ export const FloatingWhatsApp: React.FC = () => {
         </div>
       )}
 
-      {/* Main Pulse Button */}
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className="relative group flex items-center gap-3 px-4 py-3.5 rounded-full bg-[#25D366] text-black font-bold shadow-2xl shadow-emerald-500/40 hover:scale-105 transition-all duration-300 cursor-pointer"
-        aria-label="WhatsApp İletişim"
-      >
-        {/* Pulsing ring */}
-        <span className="absolute -inset-1 rounded-full bg-[#25D366] opacity-40 animate-ping -z-10" />
+      {/* Main Pulse Button with Close Option */}
+      <div className="relative group/whatsapp flex items-center">
+        {/* Dismiss / Close Button */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsDismissed(true);
+          }}
+          className="absolute -top-2.5 -right-2 w-6 h-6 rounded-full bg-[#121318] border border-white/20 hover:border-[#25D366] text-gray-300 hover:text-white flex items-center justify-center shadow-lg transition-colors z-20 cursor-pointer"
+          title="Kapat"
+          aria-label="WhatsApp butonunu kapat"
+        >
+          <X className="w-3.5 h-3.5" />
+        </button>
 
-        <MessageCircle className="w-6 h-6 fill-current" />
-        <span className="text-xs uppercase tracking-wider font-extrabold">
-          WhatsApp'tan Yazın
-        </span>
-      </button>
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative group flex items-center gap-3 px-4 py-3.5 rounded-full bg-[#25D366] text-black font-bold shadow-2xl shadow-emerald-500/40 hover:scale-105 transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0"
+          aria-label="WhatsApp İletişim"
+        >
+          {/* Pulsing ring */}
+          <span className="absolute -inset-1 rounded-full bg-[#25D366] opacity-40 animate-ping -z-10" />
+
+          <MessageCircle className="w-6 h-6 fill-current shrink-0" />
+          <span className="text-xs uppercase tracking-wider font-extrabold whitespace-nowrap">
+            WhatsApp'tan Yazın
+          </span>
+        </button>
+      </div>
     </div>
   );
 };

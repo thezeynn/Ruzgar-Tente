@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Eye, MessageCircle, Shield, ArrowUpRight, Sparkles, Check } from 'lucide-react';
+import { Eye, MessageCircle, ArrowUpRight, Check } from 'lucide-react';
 import { PRODUCTS, CONTACT_INFO } from '../data/products';
 import type { ProductModel } from '../types';
 
 import { ProductModal } from './ProductModal';
+import { MaskedHeading } from './MaskedHeading';
 
 interface ProductCatalogProps {
   onSelectProductForQuote: (productName: string) => void;
@@ -38,19 +39,19 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C5A880]/5 blur-[160px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#8E6B3B]/5 blur-[140px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#181920] border border-[#C5A880]/20 mb-4">
-            <Sparkles className="w-3.5 h-3.5 text-[#C5A880]" />
-            <span className="text-xs uppercase tracking-widest text-[#E8D5B5] font-semibold">
-              Koleksiyon & Modellerimiz
-            </span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4">
-            Üstün Mühendislik & <br />
-            <span className="text-gold-gradient font-serif italic font-normal">Mimari Estetik</span>
-          </h2>
+          <MaskedHeading
+            as="h2"
+            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            lines={[
+              'Üstün Mühendislik &',
+              <span key="gold" className="text-gold-gradient font-serif italic font-normal">
+                Mimari Estetik
+              </span>,
+            ]}
+          />
           <p className="text-sm sm:text-base text-gray-400 font-light max-w-2xl mx-auto">
             Her mekana özel milimetrik projelendirilen, birinci sınıf alüminyum ve Somfy motor güvencesiyle uzun yıllar ilk günkü konforu sunan tente ve gölgelendirme sistemleri.
           </p>
@@ -78,19 +79,6 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
                   className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#14151C] via-[#14151C]/30 to-transparent" />
-
-                {/* Badge Tag */}
-                <div className="absolute top-4 left-4">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-[#0D0E12]/80 backdrop-blur-md text-[#C5A880] border border-[#C5A880]/30 shadow-lg">
-                    {product.tag}
-                  </span>
-                </div>
-
-                {/* Warranty Badge */}
-                <div className="absolute top-4 right-4 flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-gray-300 border border-white/10">
-                  <Shield className="w-3.5 h-3.5 text-[#C5A880]" />
-                  <span>{product.warrantyYears} Yıl Garanti</span>
-                </div>
 
                 {/* Quick Hover Overlay Button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-xs">

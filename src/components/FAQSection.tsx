@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HelpCircle, ChevronDown, MessageCircle } from 'lucide-react';
+import { ChevronDown, MessageCircle } from 'lucide-react';
 
 import { FAQS, CONTACT_INFO } from '../data/products';
+import { MaskedHeading } from './MaskedHeading';
 
 export const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -16,19 +17,19 @@ export const FAQSection: React.FC = () => {
       {/* Glow Effects */}
       <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#C5A880]/5 blur-[150px] rounded-full pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#181920] border border-[#C5A880]/20 mb-4">
-            <HelpCircle className="w-3.5 h-3.5 text-[#C5A880]" />
-            <span className="text-xs uppercase tracking-widest text-[#E8D5B5] font-semibold">
-              Merak Edilenler
-            </span>
-          </div>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4">
-            Sıkça Sorulan <br />
-            <span className="text-gold-gradient font-serif italic font-normal">Sorular & Yanıtlar</span>
-          </h2>
+          <MaskedHeading
+            as="h2"
+            className="font-display text-3xl sm:text-5xl font-bold text-white tracking-tight mb-4"
+            lines={[
+              'Sıkça Sorulan',
+              <span key="gold" className="text-gold-gradient font-serif italic font-normal">
+                Sorular & Yanıtlar
+              </span>,
+            ]}
+          />
           <p className="text-sm sm:text-base text-gray-400 font-light max-w-xl mx-auto">
             Tente, pergola kumaşları, Somfy motor garantisi ve yerinde montaj süreci hakkında en çok yöneltilen sorular.
           </p>
@@ -52,10 +53,7 @@ export const FAQSection: React.FC = () => {
                   onClick={() => toggleAccordion(index)}
                   className="w-full p-6 text-left flex items-start sm:items-center justify-between gap-4 transition-colors cursor-pointer group"
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-4 flex-1">
-                    <span className="shrink-0 whitespace-nowrap text-[10px] sm:text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#C5A880]/15 text-[#C5A880] border border-[#C5A880]/30 self-start">
-                      {faq.category}
-                    </span>
+                  <div className="flex-1">
                     <span className="font-display text-base sm:text-lg font-semibold text-white group-hover:text-[#E8D5B5] transition-colors leading-snug">
                       {faq.question}
                     </span>

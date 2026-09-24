@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="bg-[#08080A] text-gray-400 text-xs border-t border-white/10 pt-16 pb-28 sm:pb-12 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 pb-12 border-b border-white/5 text-center sm:text-left">
           {/* Col 1: Brand & Bio (4 cols) */}
           <div className="sm:col-span-2 lg:col-span-4 space-y-4 flex flex-col items-center sm:items-start">
@@ -68,10 +68,9 @@ export const Footer: React.FC = () => {
               Hızlı Erişim
             </h4>
             <ul className="space-y-2.5">
-              <li><a href="#hero" className="hover:text-[#C5A880] transition-colors block">Ana Sayfa</a></li>
+              <li><a href="#anasayfa" className="hover:text-[#C5A880] transition-colors block">Ana Sayfa</a></li>
               <li><a href="#modeller" className="hover:text-[#C5A880] transition-colors block">Modellerimiz</a></li>
               <li><a href="#neden-biz" className="hover:text-[#C5A880] transition-colors block">Neden Biz?</a></li>
-              <li><a href="#fiyat-hesapla" className="hover:text-[#C5A880] transition-colors block">Fiyat Simülatörü</a></li>
               <li><a href="#projeler" className="hover:text-[#C5A880] transition-colors block">Mimari Projeler</a></li>
               <li><a href="#sss" className="hover:text-[#C5A880] transition-colors block">Sıkça Sorulan Sorular</a></li>
               <li><a href="#iletisim" className="hover:text-[#C5A880] transition-colors block">İletişim & Keşif</a></li>

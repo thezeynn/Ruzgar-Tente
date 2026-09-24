@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, MessageSquare, Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Phone, MessageSquare, Menu, X, ArrowUpRight, FileText } from 'lucide-react';
 import { CONTACT_INFO, ROTATING_PHONES } from '../data/products';
 
 // Clean Architectural Awning / Canopy Icon (Pure White, No Background)
@@ -65,10 +65,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: 'Ana Sayfa', href: '#hero' },
+    { name: 'Ana Sayfa', href: '#anasayfa' },
     { name: 'Modellerimiz', href: '#modeller' },
     { name: 'Neden Biz?', href: '#neden-biz' },
-    { name: 'Fiyat Hesapla', href: '#fiyat-hesapla' },
     { name: 'Projeler', href: '#projeler' },
     { name: 'S.S.S.', href: '#sss' },
     { name: 'İletişim', href: '#iletisim' },
@@ -85,23 +84,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
             : 'py-6 bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14">
           <div className="flex items-center justify-between gap-3 sm:gap-6">
-            {/* Brand Logo */}
-            <a href="#hero" className="group flex items-center gap-2.5 sm:gap-3 shrink-0">
-              <AwningIcon className="w-7 h-7 sm:w-8 sm:h-8 text-white group-hover:text-[#C5A880] transition-colors shrink-0" />
-              <div className="flex flex-col">
-                <span className="font-display text-base sm:text-xl font-bold tracking-wider text-white group-hover:text-[#E8D5B5] transition-colors leading-tight">
-                  RÜZGAR TENTE
-                </span>
-                <span className="text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.18em] text-gray-400 font-semibold leading-tight mt-0.5">
-                  TENTE & PERGOLA SİSTEMLERİ
-                </span>
-              </div>
-            </a>
+            {/* Left Wing: Brand Logo */}
+            <div className="flex-1 flex items-center justify-start min-w-0">
+              <a href="#anasayfa" className="group flex items-center gap-2.5 sm:gap-3 shrink-0">
+                <AwningIcon className="w-7 h-7 sm:w-8 sm:h-8 text-white group-hover:text-[#C5A880] transition-colors shrink-0" />
+                <div className="flex flex-col">
+                  <span className="font-display text-base sm:text-xl font-bold tracking-wider text-white group-hover:text-[#E8D5B5] transition-colors leading-tight">
+                    RÜZGAR TENTE
+                  </span>
+                  <span className="text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.18em] text-gray-400 font-semibold leading-tight mt-0.5">
+                    TENTE & PERGOLA SİSTEMLERİ
+                  </span>
+                </div>
+              </a>
+            </div>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden xl:flex items-center gap-6 glass-panel px-6 py-2.5 rounded-full border border-white/5 whitespace-nowrap shrink-0">
+            {/* Center Wing: Desktop Navigation (Perfect Dead-Center Alignment) */}
+            <nav className="hidden xl:flex items-center gap-6 glass-panel px-6 py-2.5 rounded-full border border-white/5 whitespace-nowrap shrink-0 mx-2">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -114,53 +115,55 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
               ))}
             </nav>
 
-            {/* Desktop Action CTAs */}
-            <div className="hidden xl:flex items-center gap-3.5 shrink-0">
-              <a
-                href={`tel:${currentPhone.raw}`}
-                className="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-gray-200 hover:text-white rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#C5A880]/40 transition-all whitespace-nowrap group overflow-hidden"
-                title={`${currentPhone.label}: ${currentPhone.phone}`}
-              >
-                <div className="w-5 h-5 rounded-full bg-[#C5A880]/20 flex items-center justify-center text-[#C5A880] group-hover:bg-[#C5A880] group-hover:text-black transition-colors">
-                  <Phone className="w-3 h-3 animate-pulse" />
-                </div>
-                <div className="flex flex-col text-left overflow-hidden h-[18px] justify-center relative min-w-[105px]">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={currentPhone.phone}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.35, ease: 'easeInOut' }}
-                      className="tracking-wide text-white block text-xs font-bold"
-                    >
-                      {currentPhone.phone}
-                    </motion.span>
-                  </AnimatePresence>
-                </div>
-              </a>
+            {/* Right Wing: Desktop Action CTAs (Balanced with Left) */}
+            <div className="flex-1 flex items-center justify-end gap-3.5 shrink-0">
+              <div className="hidden xl:flex items-center gap-3.5 shrink-0">
+                <a
+                  href={`tel:${currentPhone.raw}`}
+                  className="flex items-center gap-2.5 px-4 py-2.5 text-xs font-semibold text-gray-200 hover:text-white rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#C5A880]/40 transition-all whitespace-nowrap group overflow-hidden"
+                  title={`${currentPhone.label}: ${currentPhone.phone}`}
+                >
+                  <div className="w-5 h-5 rounded-full bg-[#C5A880]/20 flex items-center justify-center text-[#C5A880] group-hover:bg-[#C5A880] group-hover:text-black transition-colors">
+                    <Phone className="w-3 h-3 animate-pulse" />
+                  </div>
+                  <div className="flex flex-col text-left overflow-hidden h-[18px] justify-center relative min-w-[105px]">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={currentPhone.phone}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.35, ease: 'easeInOut' }}
+                        className="tracking-wide text-white block text-xs font-bold"
+                      >
+                        {currentPhone.phone}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                </a>
 
-              <button
-                type="button"
-                onClick={onOpenQuote}
-                className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold text-[#0D0E12] bg-gradient-to-r from-[#FFF0DC] via-[#C5A880] to-[#D4AF37] hover:opacity-95 transition-all duration-300 shadow-lg shadow-[#C5A880]/25 hover:shadow-[#C5A880]/45 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap cursor-pointer"
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Teklif Al</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+                <button
+                  type="button"
+                  onClick={onOpenQuote}
+                  className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-bold text-[#0D0E12] bg-gradient-to-r from-[#FFF0DC] via-[#C5A880] to-[#D4AF37] hover:opacity-95 transition-all duration-300 shadow-lg shadow-[#C5A880]/25 hover:shadow-[#C5A880]/45 hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap cursor-pointer"
+                >
+                  <FileText className="w-3.5 h-3.5 text-[#0D0E12]" />
+                  <span>Teklif Al</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
 
-            {/* Mobile & Tablet Toggle Button */}
-            <div className="flex xl:hidden items-center gap-2 shrink-0">
-              <button
-                type="button"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white hover:text-[#C5A880] transition-colors cursor-pointer shrink-0 flex items-center justify-center"
-                aria-label="Menüyü Aç/Kapat"
-              >
-                {isMobileMenuOpen ? <X className="w-5 h-5 text-[#C5A880]" /> : <Menu className="w-5 h-5" />}
-              </button>
+              {/* Mobile & Tablet Toggle Button */}
+              <div className="flex xl:hidden items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="p-2.5 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 text-white hover:text-[#C5A880] transition-colors cursor-pointer shrink-0 flex items-center justify-center"
+                  aria-label="Menüyü Aç/Kapat"
+                >
+                  {isMobileMenuOpen ? <X className="w-5 h-5 text-[#C5A880]" /> : <Menu className="w-5 h-5" />}
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -204,7 +204,7 @@ export const SHOWCASE_PROJECTS: ProjectShowcase[] = [
     title: 'Karaköy Butik Otel Teras Katı',
     category: 'ticari',
     location: 'Karaköy, İstanbul',
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1519643381401-22c77e60520e?auto=format&fit=crop&w=800&q=80',
     system: 'Geri Çekilebilir Kaset Tente'
   }
 ];

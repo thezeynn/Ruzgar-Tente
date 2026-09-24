@@ -19,19 +19,41 @@
   --color-dark-600: #2F323D;
 }
 
-/* Custom Scrollbar */
+html {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: overlay; /* Allows page background to flow seamlessly under the scrollbar in Webkit/Blink */
+  scrollbar-gutter: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(197, 168, 128, 0.4) transparent;
+  background-color: #08080B;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #08080B;
+}
+
+/* Custom Scrollbar - Completely transparent track: page backgrounds flow 100% to the edge */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0D0E12;
+  background: transparent !important;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2A2B35;
-  border-radius: 4px;
+  background: rgba(197, 168, 128, 0.35);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C5A880;
+  background: rgba(197, 168, 128, 0.75);
 }
 
 /* Lenis Smooth Scroll Recommended Base */
@@ -88,4 +110,16 @@ html.lenis, html.lenis body {
 
 .bg-radial-gradient {
   background: radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.12) 0%, rgba(13, 14, 18, 0) 70%);
+}
+
+/* Maskeli Başlık Harf/Satır Efekti (Creatix Mask Reveal) */
+.char-mask {
+  display: block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.char-inner {
+  display: inline-block;
+  will-change: transform;
 }

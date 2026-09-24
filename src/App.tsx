@@ -4,7 +4,6 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { ProductCatalog } from './components/ProductCatalog';
 import { WhyUs } from './components/WhyUs';
-import { PriceEstimator } from './components/PriceEstimator';
 import { GallerySection } from './components/GallerySection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { FAQSection } from './components/FAQSection';
@@ -53,16 +52,15 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#08080B] text-[#F3F4F6] flex flex-col selection:bg-[#C5A880] selection:text-[#08080B]">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#08080B] text-[#F3F4F6] flex flex-col selection:bg-[#C5A880] selection:text-[#08080B]">
       {/* Header */}
       <Header onOpenQuote={() => handleOpenQuote()} />
 
       {/* Main Content */}
-      <main className="flex-grow">
+      <main className="flex-grow w-full bg-[#08080B]">
         <Hero onOpenQuote={() => handleOpenQuote()} />
         <ProductCatalog onSelectProductForQuote={handleOpenQuote} />
         <WhyUs />
-        <PriceEstimator />
         <GallerySection />
         <TestimonialsSection />
         <FAQSection />

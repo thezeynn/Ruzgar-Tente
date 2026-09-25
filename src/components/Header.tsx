@@ -4,27 +4,22 @@ import { Phone, MessageSquare, Menu, X, ArrowUpRight, FileText } from 'lucide-re
 import { CONTACT_INFO, ROTATING_PHONES } from '../data/products';
 import { NAV_ITEMS, navigateTo } from '../utils/navigation';
 
-// Clean Architectural Awning / Canopy Icon (Matches new brand logo)
+// Clean Architectural Awning / Canopy Icon (Pure White, No Background)
 export const AwningIcon: React.FC<{ className?: string }> = ({ className = 'w-7 h-7 text-white' }) => (
   <svg
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="1.8"
+    strokeWidth="1.85"
     strokeLinecap="round"
     strokeLinejoin="round"
     className={className}
   >
-    {/* Roof Triangle */}
-    <path d="M3 11L12 4.5L21 11Z" />
-    
-    {/* Scalloped Valance */}
-    <path d="M3 11c0 2.2 2.2 2.8 4.5 1.5 2.3 1.3 4.5 1.3 4.5-0.2 0 1.5 2.2 1.5 4.5 0.2 2.3 1.3 4.5 0.7 4.5-1.5" />
-    
-    {/* 3 Vertical Pillars */}
-    <path d="M7.5 13.5v5.5" />
-    <path d="M12 13.5v5.5" />
-    <path d="M16.5 13.5v5.5" />
+    <path d="M2.5 10L12 4.5l9.5 5.5" />
+    <path d="M3 10h18v2a2 2 0 0 1-3.6 1.2 2 2 0 0 1-3.6 0 2 2 0 0 1-3.6 0 2 2 0 0 1-3.6 0 2 2 0 0 1-3.6-1.2V10z" />
+    <path d="M5 14v6" />
+    <path d="M19 14v6" />
+    <path d="M12 14v6" />
   </svg>
 );
 

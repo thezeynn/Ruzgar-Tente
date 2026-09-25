@@ -80,7 +80,9 @@ export const GallerySection: React.FC = () => {
                   src={project.image}
                   alt={project.title}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out pointer-events-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
@@ -132,7 +134,9 @@ export const GallerySection: React.FC = () => {
               src={lightboxProject.image}
               alt={lightboxProject.title}
               referrerPolicy="no-referrer"
-              className="w-full h-[450px] object-cover"
+              draggable={false}
+              onDragStart={(e) => e.preventDefault()}
+              className="w-full h-[450px] object-cover pointer-events-none"
             />
 
             <div className="p-6 bg-[#181920] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">

@@ -90,7 +90,9 @@ export const WhyUs: React.FC = () => {
                 src="/images/kasetli_tente_1790268955447.jpg"
                 alt="Rüzgar Tente Üretim ve Mimari İşçilik"
                 referrerPolicy="no-referrer"
-                className="w-full h-[280px] sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
+                draggable={false}
+                onDragStart={(e) => e.preventDefault()}
+                className="w-full h-[280px] sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 

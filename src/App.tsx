@@ -44,6 +44,17 @@ export function App() {
     };
   }, []);
 
+  // Sitedeki tüm görsellerin fare ile sürüklenmesini (ghost drag) engelle
+  useEffect(() => {
+    const handleDragStart = (e: DragEvent) => {
+      if ((e.target as HTMLElement)?.tagName === 'IMG' || (e.target as HTMLElement)?.closest('img')) {
+        e.preventDefault();
+      }
+    };
+    window.addEventListener('dragstart', handleDragStart);
+    return () => window.removeEventListener('dragstart', handleDragStart);
+  }, []);
+
   const handleOpenQuote = (productName?: string) => {
     if (productName) {
       setPreselectedProduct(productName);

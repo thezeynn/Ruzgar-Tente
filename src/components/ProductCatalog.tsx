@@ -77,7 +77,9 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
                   src={product.image}
                   alt={product.title}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                  draggable={false}
+                  onDragStart={(e) => e.preventDefault()}
+                  className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out pointer-events-none"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#14151C] via-[#14151C]/30 to-transparent" />
 
@@ -147,6 +149,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
 
       {/* Product Detail Modal */}
       <ProductModal
+        key={selectedProduct?.id}
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}
         onSelectForQuote={onSelectProductForQuote}

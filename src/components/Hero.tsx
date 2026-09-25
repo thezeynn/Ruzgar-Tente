@@ -21,7 +21,9 @@ export const Hero: React.FC<HeroProps> = () => {
           src="/images/sasirtma_pergola_1790269026014.jpg"
           alt="Lüks Bioklimatik Pergola ve Açık Hava Yaşam Alanı"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center brightness-[0.7] contrast-[1.05]"
+          draggable={false}
+          onDragStart={(e) => e.preventDefault()}
+          className="w-full h-full object-cover object-center brightness-[0.7] contrast-[1.05] pointer-events-none"
         />
         {/* Gradients */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#08080B] via-[#08080B]/70 to-[#08080B]/40" />

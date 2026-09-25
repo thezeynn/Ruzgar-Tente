@@ -38,6 +38,17 @@ body {
   background-color: #08080B;
 }
 
+/* Görsellerin sitede fare (mouse) ile sürüklenmesini ve seçimini tamamen engelle */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 /* Custom Scrollbar - Completely transparent track: page backgrounds flow 100% to the edge */
 ::-webkit-scrollbar {
   width: 8px;

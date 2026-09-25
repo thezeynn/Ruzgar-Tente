@@ -23,9 +23,6 @@ import {
 import { useProducts } from '../hooks/useProducts';
 import type { ProjectShowcase } from '../types';
 
-const DEFAULT_PIN = '3577';
-const AUTH_STORAGE_KEY = 'ruzgar_tente_admin_auth';
-
 // Helper to compress and convert file to Data URL
 function processImageFile(file: File, maxWidth = 1400, quality = 0.85): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -83,12 +80,12 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({ onPreviewProdu
     removeProductImage,
     setMainProductImage,
     resetProductToDefault,
+    isAdminAuthenticated,
+    loginAdmin,
+    logoutAdmin,
   } = useProducts();
 
   // Authentication State
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return sessionStorage.getItem(AUTH_STORAGE_KEY) === 'true';
-  });
   const [pinInput, setPinInput] = useState<string>('');
   const [pinError, setPinError] = useState<string>('');
 
@@ -125,19 +122,18 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({ onPreviewProdu
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (pinInput.trim() === DEFAULT_PIN) {
-      setIsAuthenticated(true);
-      sessionStorage.setItem(AUTH_STORAGE_KEY, 'true');
+    const success = loginAdmin(pinInput);
+    if (success) {
       setPinError('');
       setPinInput('');
+      showFeedback('Yönetici girişi başarılı!');
     } else {
       setPinError('Hatalı şifre girdiniz. Lütfen tekrar deneyin.');
     }
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
-    sessionStorage.removeItem(AUTH_STORAGE_KEY);
+    logoutAdmin();
   };
 
   // Product Tab: Add from File Upload
@@ -290,7 +286,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({ onPreviewProdu
           </div>
 
           <div className="flex items-center gap-2">
-            {isAuthenticated && (
+            {isAdminAuthenticated && (
               <button
                 type="button"
                 onClick={handleLogout}
@@ -315,7 +311,7 @@ export const AdminPanelModal: React.FC<AdminPanelModalProps> = ({ onPreviewProdu
         {/* Content Area */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
           {/* LOGIN SCREEN IF NOT AUTHENTICATED */}
-          {!isAuthenticated ? (
+          {!isAdminAuthenticated ? (
             <div className="max-w-md mx-auto py-12 px-4 text-center">
               <div className="w-16 h-16 rounded-2xl bg-[#C5A880]/10 border border-[#C5A880]/30 flex items-center justify-center text-[#C5A880] mx-auto mb-4">
                 <Lock className="w-8 h-8" />

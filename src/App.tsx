@@ -22,22 +22,33 @@ function AppContent() {
   const { activeSection } = useNavigationRouter();
   const { openAdminPanel } = useProducts();
 
-  // Check if URL ends with /admin or #admin or key shortcut to open Admin Panel
+  // Secret URL trigger: URL sonuna /yonetim veya #yonetim girildiğinde PIN giriş modalını aç
   useEffect(() => {
-    if (window.location.pathname === '/admin' || window.location.hash === '#admin') {
-      openAdminPanel();
-    }
+    const checkSecretUrl = () => {
+      const pathname = window.location.pathname.toLowerCase();
+      const hash = window.location.hash.toLowerCase();
+      
+      const isSecretUrl =
+        pathname === '/yonetim' ||
+        pathname === '/yonetim/' ||
+        hash === '#yonetim' ||
+        pathname === '/panel' ||
+        pathname === '/panel/' ||
+        hash === '#panel';
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Alt + A or Ctrl + Shift + A shortcut to open Admin Panel
-      if ((e.altKey && e.key.toLowerCase() === 'a') || (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a')) {
-        e.preventDefault();
+      if (isSecretUrl) {
         openAdminPanel();
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    checkSecretUrl();
+    window.addEventListener('hashchange', checkSecretUrl);
+    window.addEventListener('popstate', checkSecretUrl);
+
+    return () => {
+      window.removeEventListener('hashchange', checkSecretUrl);
+      window.removeEventListener('popstate', checkSecretUrl);
+    };
   }, [openAdminPanel]);
 
   // Sayfa kaydırma animasyonu (Smooth Scrolling Engine)

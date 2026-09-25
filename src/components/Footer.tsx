@@ -1,29 +1,12 @@
-import React, { useRef } from 'react';
-import { Phone, Mail, MapPin, ArrowUp } from 'lucide-react';
+import React from 'react';
+import { Phone, Mail, MapPin, ArrowUp, ShieldCheck } from 'lucide-react';
 import { CONTACT_INFO, PRODUCTS } from '../data/products';
 import { AwningIcon } from './Header';
 import { navigateTo } from '../utils/navigation';
 import { useProducts } from '../hooks/useProducts';
 
 export const Footer: React.FC = () => {
-  const { openAdminPanel } = useProducts();
-  const secretClickCountRef = useRef<number>(0);
-  const clickTimeoutRef = useRef<number | null>(null);
-
-  const handleCopyrightClick = () => {
-    secretClickCountRef.current += 1;
-    if (clickTimeoutRef.current !== null) {
-      window.clearTimeout(clickTimeoutRef.current);
-    }
-    if (secretClickCountRef.current >= 3) {
-      secretClickCountRef.current = 0;
-      openAdminPanel();
-    } else {
-      clickTimeoutRef.current = window.setTimeout(() => {
-        secretClickCountRef.current = 0;
-      }, 1500);
-    }
-  };
+  const { openAdminPanel, isAdminAuthenticated } = useProducts();
 
   const scrollToTop = () => {
     navigateTo('/anasayfa');
@@ -218,16 +201,25 @@ export const Footer: React.FC = () => {
 
         {/* Bottom bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <p
-            onClick={handleCopyrightClick}
-            className="text-gray-500 text-xs select-none cursor-default"
-          >
+          <p className="text-gray-500 text-xs">
             © {new Date().getFullYear()} Rüzgar Tente Sistemleri Ltd. Şti. Tüm Hakları Saklıdır.
           </p>
 
           <div className="flex items-center justify-center flex-wrap gap-4 sm:gap-6">
             <span className="text-gray-500 hover:text-gray-400 cursor-pointer">Gizlilik & KVKK</span>
             <span className="text-gray-500 hover:text-gray-400 cursor-pointer">Garanti Koşulları</span>
+
+            {isAdminAuthenticated && (
+              <button
+                type="button"
+                onClick={() => openAdminPanel()}
+                className="inline-flex items-center gap-1.5 text-gray-400 hover:text-[#C5A880] bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full border border-white/10 transition-colors cursor-pointer text-xs"
+                title="Rüzgar Tente Yönetici Paneli"
+              >
+                <ShieldCheck className="w-3.5 h-3.5 text-[#C5A880]" />
+                <span>Yönetici Paneli</span>
+              </button>
+            )}
 
             <button
               onClick={scrollToTop}

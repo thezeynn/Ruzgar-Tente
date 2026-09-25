@@ -5,8 +5,17 @@ import { ProductContext } from './productContextCore';
 
 const PRODUCTS_STORAGE_KEY = 'ruzgar_tente_products_v1';
 const GALLERY_STORAGE_KEY = 'ruzgar_tente_gallery_projects_v1';
+const ADMIN_AUTH_KEY = 'ruzgar_tente_admin_auth_v1';
+const ADMIN_PIN = '3577';
 
 export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem(ADMIN_AUTH_KEY) === 'true';
+    } catch {
+      return false;
+    }
+  });
   const [products, setProducts] = useState<ProductModel[]>(() => {
     try {
       const stored = localStorage.getItem(PRODUCTS_STORAGE_KEY);
@@ -223,6 +232,29 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     localStorage.removeItem(GALLERY_STORAGE_KEY);
   }, []);
 
+  const loginAdmin = useCallback((pin: string) => {
+    if (pin.trim() === ADMIN_PIN) {
+      setIsAdminAuthenticated(true);
+      try {
+        localStorage.setItem(ADMIN_AUTH_KEY, 'true');
+      } catch (e) {
+        console.error('Failed to save admin auth to localStorage:', e);
+      }
+      return true;
+    }
+    return false;
+  }, []);
+
+  const logoutAdmin = useCallback(() => {
+    setIsAdminAuthenticated(false);
+    try {
+      localStorage.removeItem(ADMIN_AUTH_KEY);
+    } catch (e) {
+      console.error('Failed to remove admin auth from localStorage:', e);
+    }
+    setIsAdminOpen(false);
+  }, []);
+
   return (
     <ProductContext.Provider
       value={{
@@ -241,6 +273,9 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
         resetGalleryProjectsToDefault,
         isAdminOpen,
         setIsAdminOpen,
+        isAdminAuthenticated,
+        loginAdmin,
+        logoutAdmin,
         adminSelectedProductId,
         setAdminSelectedProductId,
         adminActiveTab,

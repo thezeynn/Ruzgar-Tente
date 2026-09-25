@@ -21,6 +21,9 @@ export interface ProductContextType {
   // Admin Modal Controls
   isAdminOpen: boolean;
   setIsAdminOpen: (open: boolean) => void;
+  isAdminAuthenticated: boolean;
+  loginAdmin: (pin: string) => boolean;
+  logoutAdmin: () => void;
   adminSelectedProductId: string | null;
   setAdminSelectedProductId: (id: string | null) => void;
   adminActiveTab: 'products' | 'gallery';

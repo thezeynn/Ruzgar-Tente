@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, MessageSquare, Menu, X, ArrowUpRight, FileText } from 'lucide-react';
 import { CONTACT_INFO, ROTATING_PHONES } from '../data/products';
+import { NAV_ITEMS, navigateTo } from '../utils/navigation';
 
 // Clean Architectural Awning / Canopy Icon (Pure White, No Background)
 export const AwningIcon: React.FC<{ className?: string }> = ({ className = 'w-7 h-7 text-white' }) => (
@@ -24,9 +25,10 @@ export const AwningIcon: React.FC<{ className?: string }> = ({ className = 'w-7 
 
 interface HeaderProps {
   onOpenQuote: () => void;
+  activeSection?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenQuote, activeSection = 'anasayfa' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activePhoneIndex, setActivePhoneIndex] = useState(0);
@@ -64,15 +66,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
     };
   }, [isMobileMenuOpen]);
 
-  const navLinks = [
-    { name: 'Ana Sayfa', href: '#anasayfa' },
-    { name: 'Modellerimiz', href: '#modeller' },
-    { name: 'Neden Biz?', href: '#neden-biz' },
-    { name: 'Projeler', href: '#projeler' },
-    { name: 'S.S.S.', href: '#sss' },
-    { name: 'İletişim', href: '#iletisim' },
-  ];
-
   const currentPhone = ROTATING_PHONES[activePhoneIndex] || ROTATING_PHONES[0];
 
   return (
@@ -88,7 +81,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
           <div className="flex items-center justify-between gap-3 sm:gap-6">
             {/* Left Wing: Brand Logo */}
             <div className="flex-1 flex items-center justify-start min-w-0">
-              <a href="#anasayfa" className="group flex items-center gap-2.5 sm:gap-3 shrink-0">
+              <a
+                href="/anasayfa"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigateTo('/anasayfa');
+                }}
+                className="group flex items-center gap-2.5 sm:gap-3 shrink-0"
+              >
                 <AwningIcon className="w-7 h-7 sm:w-8 sm:h-8 text-white group-hover:text-[#C5A880] transition-colors shrink-0" />
                 <div className="flex flex-col">
                   <span className="font-display text-base sm:text-xl font-bold tracking-wider text-white group-hover:text-[#E8D5B5] transition-colors leading-tight">
@@ -103,16 +103,29 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
 
             {/* Center Wing: Desktop Navigation (Perfect Dead-Center Alignment) */}
             <nav className="hidden xl:flex items-center gap-6 glass-panel px-6 py-2.5 rounded-full border border-white/5 whitespace-nowrap shrink-0 mx-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-xs font-semibold text-gray-300 hover:text-[#C5A880] transition-colors duration-200 relative group py-1 whitespace-nowrap"
-                >
-                  {link.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-[#C5A880] to-[#E8D5B5] group-hover:w-full transition-all duration-300 rounded-full" />
-                </a>
-              ))}
+              {NAV_ITEMS.map((link) => {
+                const isActive = activeSection === link.sectionId;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.path}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigateTo(link.path);
+                    }}
+                    className={`text-xs font-semibold transition-colors duration-200 relative group py-1 whitespace-nowrap ${
+                      isActive ? 'text-[#C5A880]' : 'text-gray-300 hover:text-[#C5A880]'
+                    }`}
+                  >
+                    {link.name}
+                    <span
+                      className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#C5A880] to-[#E8D5B5] transition-all duration-300 rounded-full ${
+                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                      }`}
+                    />
+                  </a>
+                );
+              })}
             </nav>
 
             {/* Right Wing: Desktop Action CTAs (Balanced with Left) */}
@@ -204,16 +217,25 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
               <p className="text-xs uppercase tracking-widest text-[#C5A880] font-semibold mb-3">
                 Menü & Navigasyon
               </p>
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-lg font-medium text-gray-200 hover:text-[#C5A880] transition-colors py-3 border-b border-white/5"
-                >
-                  {link.name}
-                </a>
-              ))}
+              {NAV_ITEMS.map((link) => {
+                const isActive = activeSection === link.sectionId;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.path}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsMobileMenuOpen(false);
+                      navigateTo(link.path);
+                    }}
+                    className={`block text-lg font-medium transition-colors py-3 border-b border-white/5 ${
+                      isActive ? 'text-[#C5A880] font-bold pl-2 border-l-2 border-l-[#C5A880]' : 'text-gray-200 hover:text-[#C5A880]'
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
             </div>
 
             {/* Mobile Footer CTAs */}

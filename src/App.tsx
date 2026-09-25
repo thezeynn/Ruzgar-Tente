@@ -11,9 +11,12 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileQuickBar } from './components/MobileQuickBar';
+import { useNavigationRouter } from './hooks/useNavigationRouter';
+import { navigateTo } from './utils/navigation';
 
 export function App() {
   const [preselectedProduct, setPreselectedProduct] = useState<string>('Bioklimatik Pergola Sistemleri');
+  const { activeSection } = useNavigationRouter();
 
   // Sayfa kaydırma animasyonu (Smooth Scrolling Engine)
   useEffect(() => {
@@ -45,16 +48,13 @@ export function App() {
     if (productName) {
       setPreselectedProduct(productName);
     }
-    const element = document.getElementById('iletisim');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigateTo('/iletisim');
   };
 
   return (
     <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#08080B] text-[#F3F4F6] flex flex-col selection:bg-[#C5A880] selection:text-[#08080B]">
       {/* Header */}
-      <Header onOpenQuote={() => handleOpenQuote()} />
+      <Header onOpenQuote={() => handleOpenQuote()} activeSection={activeSection} />
 
       {/* Main Content */}
       <main className="flex-grow w-full bg-[#08080B]">

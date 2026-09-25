@@ -2,10 +2,11 @@ import React from 'react';
 import { Phone, Mail, MapPin, ArrowUp } from 'lucide-react';
 import { CONTACT_INFO, PRODUCTS } from '../data/products';
 import { AwningIcon } from './Header';
+import { navigateTo } from '../utils/navigation';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigateTo('/anasayfa');
   };
 
   return (
@@ -14,17 +15,24 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 pb-12 border-b border-white/5 text-center sm:text-left">
           {/* Col 1: Brand & Bio (4 cols) */}
           <div className="sm:col-span-2 lg:col-span-4 space-y-4 flex flex-col items-center sm:items-start">
-            <div className="flex items-center justify-center sm:justify-start gap-3">
-              <AwningIcon className="w-8 h-8 text-white shrink-0" />
+            <a
+              href="/anasayfa"
+              onClick={(e) => {
+                e.preventDefault();
+                navigateTo('/anasayfa');
+              }}
+              className="flex items-center justify-center sm:justify-start gap-3 cursor-pointer group"
+            >
+              <AwningIcon className="w-8 h-8 text-white group-hover:text-[#C5A880] transition-colors shrink-0" />
               <div className="flex flex-col text-left">
-                <span className="font-display text-xl font-bold tracking-wider text-white leading-tight">
+                <span className="font-display text-xl font-bold tracking-wider text-white group-hover:text-[#E8D5B5] transition-colors leading-tight">
                   RÜZGAR TENTE
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.18em] text-gray-400 font-semibold leading-tight mt-0.5">
                   TENTE & PERGOLA SİSTEMLERİ
                 </span>
               </div>
-            </div>
+            </a>
 
             <p className="text-gray-400 font-light leading-relaxed max-w-sm mx-auto sm:mx-0">
               15 yılı aşkın süredir villa, teras, lüks kafe ve restoranlar için premium bioklimatik pergolalar, motorlu kasetli tenteler ve yalıtımlı kış bahçeleri üretiyoruz.
@@ -54,7 +62,14 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5">
               {PRODUCTS.map((p) => (
                 <li key={p.id}>
-                  <a href="#modeller" className="hover:text-[#C5A880] transition-colors block">
+                  <a
+                    href="/modeller"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigateTo('/modeller');
+                    }}
+                    className="hover:text-[#C5A880] transition-colors block cursor-pointer"
+                  >
                     {p.title}
                   </a>
                 </li>
@@ -68,12 +83,78 @@ export const Footer: React.FC = () => {
               Hızlı Erişim
             </h4>
             <ul className="space-y-2.5">
-              <li><a href="#anasayfa" className="hover:text-[#C5A880] transition-colors block">Ana Sayfa</a></li>
-              <li><a href="#modeller" className="hover:text-[#C5A880] transition-colors block">Modellerimiz</a></li>
-              <li><a href="#neden-biz" className="hover:text-[#C5A880] transition-colors block">Neden Biz?</a></li>
-              <li><a href="#projeler" className="hover:text-[#C5A880] transition-colors block">Mimari Projeler</a></li>
-              <li><a href="#sss" className="hover:text-[#C5A880] transition-colors block">Sıkça Sorulan Sorular</a></li>
-              <li><a href="#iletisim" className="hover:text-[#C5A880] transition-colors block">İletişim & Keşif</a></li>
+              <li>
+                <a
+                  href="/anasayfa"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('/anasayfa');
+                  }}
+                  className="hover:text-[#C5A880] transition-colors block cursor-pointer"
+                >
+                  Ana Sayfa
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/modeller"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('/modeller');
+                  }}
+                  className="hover:text-[#C5A880] transition-colors block cursor-pointer"
+                >
+                  Modellerimiz
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/neden-biz"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('/neden-biz');
+                  }}
+                  className="hover:text-[#C5A880] transition-colors block cursor-pointer"
+                >
+                  Neden Biz?
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/projeler"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('/projeler');
+                  }}
+                  className="hover:text-[#C5A880] transition-colors block cursor-pointer"
+                >
+                  Mimari Projeler
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/sss"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('/sss');
+                  }}
+                  className="hover:text-[#C5A880] transition-colors block cursor-pointer"
+                >
+                  Sıkça Sorulan Sorular
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/iletisim"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo('/iletisim');
+                  }}
+                  className="hover:text-[#C5A880] transition-colors block cursor-pointer"
+                >
+                  İletişim & Keşif
+                </a>
+              </li>
             </ul>
           </div>
 

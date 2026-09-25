@@ -71,9 +71,9 @@ export const PRODUCTS: ProductModel[] = [
     title: 'Klasik & Motorlu Mafsallı Tente',
     subtitle: 'Dükkan, Cafe ve Teraslar İçin Estetik Gölgelendirme',
     tag: 'Klasik & Güçlü',
-    image: '/images/kahvecin_mafsalli_tente_1790269771116.jpg',
+    image: '/images/kahvecin_mafsalli_tente.jpg',
     galleryImages: [
-      '/images/kahvecin_mafsalli_tente_1790269771116.jpg',
+      '/images/kahvecin_mafsalli_tente.jpg',
       '/images/kasetli_tente_1790268955447.jpg',
       '/images/koruklu_tente_1790268976928.jpg'
     ],
@@ -138,7 +138,7 @@ export const PRODUCTS: ProductModel[] = [
     image: '/images/koruklu_tente_1790268976928.jpg',
     galleryImages: [
       '/images/koruklu_tente_1790268976928.jpg',
-      '/images/kahvecin_mafsalli_tente_1790269771116.jpg',
+      '/images/kahvecin_mafsalli_tente.jpg',
       '/images/kasetli_tente_1790268955447.jpg'
     ],
     description: 'Pencereler, butik girişleri, tiny house ve oteller için yanlardan gelen eğimli güneş ışınlarını da kesen akordeon körük mekanizmalı zarif tente mimarisi.',
@@ -279,7 +279,7 @@ export const SHOWCASE_PROJECTS: ProjectShowcase[] = [
     title: 'Kahvecin Cafe Mafsallı Tente',
     category: 'restoran',
     location: 'Namık Kemal Caddesi, İzmir',
-    image: '/images/kahvecin_mafsalli_tente_1790269771116.jpg',
+    image: '/images/kahvecin_mafsalli_tente.jpg',
     system: 'Özel Logolu Klasik Mafsallı Tente'
   },
   {

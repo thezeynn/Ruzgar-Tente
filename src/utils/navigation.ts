@@ -21,7 +21,7 @@ export function scrollToSection(sectionId: string) {
   if (scrollTimeout) clearTimeout(scrollTimeout);
   scrollTimeout = setTimeout(() => {
     isProgrammaticScrolling = false;
-  }, 1000);
+  }, 1200);
 
   if (sectionId === 'anasayfa' || !sectionId) {
     window.scrollTo({ top: 0, behavior: 'smooth' });

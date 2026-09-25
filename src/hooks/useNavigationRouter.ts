@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react';
 import { NAV_ITEMS, isUserScrolling, scrollToSection } from '../utils/navigation';
 
+const SCROLL_SECTIONS = [
+  { id: 'iletisim', path: '/iletisim' },
+  { id: 'sss', path: '/sss' },
+  { id: 'projeler', path: '/projeler' },
+  { id: 'neden-biz', path: '/neden-biz' },
+  { id: 'modeller', path: '/modeller' },
+];
+
 function getInitialSection(): string {
   if (typeof window === 'undefined') return 'anasayfa';
   const hash = window.location.hash;
@@ -22,8 +30,8 @@ function getInitialSection(): string {
 export function useNavigationRouter() {
   const [activeSection, setActiveSection] = useState<string>(getInitialSection);
 
+  // 1. Initial URL normalization and initial scroll
   useEffect(() => {
-    // 1. Initial cleanup: If URL has '#' like '#/anasayfa' or '#anasayfa'
     const hash = window.location.hash;
     const pathname = window.location.pathname;
 
@@ -40,22 +48,46 @@ export function useNavigationRouter() {
       const matched = NAV_ITEMS.find((n) => n.sectionId === cleanPath || n.path === pathname);
       if (matched) {
         targetSection = matched.sectionId;
+      } else {
+        window.history.replaceState(null, '', '/anasayfa');
       }
     } else {
       // Default clean path is /anasayfa
       window.history.replaceState(null, '', '/anasayfa');
     }
 
-    // Scroll to initial target section if not home
+    // If starting at a specific section (e.g. /modeller direct link), scroll to it
     if (targetSection !== 'anasayfa') {
       const timer = setTimeout(() => {
         scrollToSection(targetSection);
-      }, 200);
+      }, 250);
       return () => clearTimeout(timer);
+    } else {
+      // Ensure clean /anasayfa in address bar on initial load
+      if (window.location.pathname !== '/anasayfa') {
+        window.history.replaceState(null, '', '/anasayfa');
+      }
     }
   }, []);
 
-  // Listen to popstate (back/forward browser buttons)
+  // 2. Listen to custom app-route-change (fired when clicking nav links via navigateTo)
+  useEffect(() => {
+    const handleRouteChange = (e: Event) => {
+      const customEvent = e as CustomEvent<{ path: string; sectionId: string }>;
+      if (customEvent.detail) {
+        const { path, sectionId } = customEvent.detail;
+        setActiveSection(sectionId);
+        if (window.location.pathname !== path) {
+          window.history.replaceState(null, '', path);
+        }
+      }
+    };
+
+    window.addEventListener('app-route-change', handleRouteChange);
+    return () => window.removeEventListener('app-route-change', handleRouteChange);
+  }, []);
+
+  // 3. Listen to popstate (back/forward browser buttons)
   useEffect(() => {
     const handlePopState = () => {
       const pathname = window.location.pathname.replace(/^\//, '');
@@ -69,50 +101,49 @@ export function useNavigationRouter() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Scroll spy: Update browser URL dynamically without # as user scrolls
+  // 4. Scroll spy: strictly syncs active section & URL without #
   useEffect(() => {
     let ticking = false;
 
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          if (!isUserScrolling()) {
-            ticking = false;
-            return;
-          }
-
-          const scrollPosition = window.scrollY + 140;
-          const sections = NAV_ITEMS.map((item) => ({
-            id: item.sectionId,
-            path: item.path,
-            el: document.getElementById(item.sectionId),
-          })).filter((s) => s.el !== null);
-
-          // If at the very top of the page, it's anasayfa
-          if (window.scrollY < 120) {
-            if (activeSection !== 'anasayfa') {
-              setActiveSection('anasayfa');
-              if (window.location.pathname !== '/anasayfa') {
-                window.history.replaceState(null, '', '/anasayfa');
-              }
-            }
-            ticking = false;
-            return;
-          }
-
-          for (let i = sections.length - 1; i >= 0; i--) {
-            const section = sections[i];
-            if (section.el && section.el.offsetTop <= scrollPosition) {
-              if (activeSection !== section.id) {
-                setActiveSection(section.id);
-                if (window.location.pathname !== section.path) {
-                  window.history.replaceState(null, '', section.path);
-                }
-              }
-              break;
-            }
-          }
           ticking = false;
+          if (!isUserScrolling()) return;
+
+          const scrollY = window.scrollY;
+
+          // Check sections from bottom to top
+          let currentSection = 'anasayfa';
+          let currentPath = '/anasayfa';
+
+          // First check modeller's offset to ensure anasayfa is rock solid
+          const modellerEl = document.getElementById('modeller');
+          const modellerTop = modellerEl ? modellerEl.offsetTop : 750;
+
+          // If anywhere in the upper portion above modeller section
+          if (scrollY < modellerTop - 180) {
+            currentSection = 'anasayfa';
+            currentPath = '/anasayfa';
+          } else {
+            // Find section that user has scrolled into
+            for (const sec of SCROLL_SECTIONS) {
+              const el = document.getElementById(sec.id);
+              if (el && scrollY >= el.offsetTop - 200) {
+                currentSection = sec.id;
+                currentPath = sec.path;
+                break;
+              }
+            }
+          }
+
+          // Update active state
+          setActiveSection(currentSection);
+
+          // Update address bar path if not matching (ensuring 0 desync)
+          if (window.location.pathname !== currentPath) {
+            window.history.replaceState(null, '', currentPath);
+          }
         });
         ticking = true;
       }
@@ -120,7 +151,7 @@ export function useNavigationRouter() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeSection]);
+  }, []);
 
   return { activeSection, setActiveSection };
 }

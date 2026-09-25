@@ -62,11 +62,12 @@ export const WhyUs: React.FC = () => {
             as="h2"
             className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4"
             lines={[
-              <span key="why">
-                Neden{' '}
-                <span className="inline-block text-gold-gradient font-serif italic font-normal pr-3">
-                  Rüzgar Tente?
-                </span>
+              'Neden',
+              <span
+                key="gold"
+                className="inline-block text-gold-gradient font-serif italic font-normal pr-6 -mr-6 pb-1"
+              >
+                Rüzgar Tente?
               </span>,
             ]}
           />

@@ -108,13 +108,13 @@ export const GallerySection: React.FC = () => {
                   referrerPolicy="no-referrer"
                   draggable={false}
                   onDragStart={(e) => e.preventDefault()}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out pointer-events-none"
+                  className="w-full h-full object-cover group-hover:scale-110 group-hover:blur-[1px] transition-all duration-700 ease-out pointer-events-none"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
 
                 {/* Hover Eye Icon */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-xs">
-                  <div className="w-12 h-12 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                <div className="absolute -inset-2 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/45 backdrop-blur-sm pointer-events-none">
+                  <div className="w-12 h-12 rounded-full bg-white/10 border border-white/20 backdrop-blur-md flex items-center justify-center text-white shadow-xl">
                     <Eye className="w-5 h-5 text-[#C5A880]" />
                   </div>
                 </div>

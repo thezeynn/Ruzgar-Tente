@@ -40,10 +40,10 @@ export const MaskedHeading: React.FC<MaskedHeadingProps> = ({
       {lines.map((line, index) => (
         <span
           key={index}
-          className="char-mask block overflow-hidden pt-1 -mt-1 pb-1.5 -mb-1.5 pr-4 -mr-4"
+          className="char-mask block overflow-hidden pt-1 -mt-1 pb-1.5 -mb-1.5 pr-8 -mr-8"
         >
           <motion.span
-            className="char-inner inline-block will-change-transform pr-1"
+            className="char-inner inline-block will-change-transform pr-8 -mr-8"
             initial={{ y: '105%', opacity: 0 }}
             animate={
               isRevealed

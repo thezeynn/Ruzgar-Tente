@@ -6,7 +6,6 @@ import {
   Mail, 
   MapPin, 
   Clock, 
-  Send, 
   CheckCircle2, 
   ShieldCheck, 
   AlertCircle,
@@ -315,7 +314,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
                   </div>
                   <div>
                     <strong className="text-white block font-semibold mb-0.5">Çalışma Saatleri:</strong>
-                    <span className="text-gray-400">{CONTACT_INFO.workingHours}</span>
+                    <div className="text-gray-400 text-xs">
+                      <span>Pzt - Cmt: 08:30 - 18:00</span>
+                      <span className="block text-red-500 font-semibold">Pazar: Kapalı</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -686,7 +688,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
                         <span>Talebiniz Gönderiliyor...</span>
                       ) : (
                         <>
-                          <Send className="w-4 h-4" />
                           <span>Ücretsiz Keşif & Fiyat Teklifi İste</span>
                           <ArrowRight className="w-4 h-4" />
                         </>
@@ -694,15 +695,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
                     </button>
 
                     {/* Trust & Guarantee Indicator */}
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-1 px-1 text-[11px] text-gray-400">
-                      <div className="flex items-center gap-1.5">
-                        <ShieldCheck className="w-3.5 h-3.5 text-[#C5A880] shrink-0" />
-                        <span>KVKK Uyumlu • 256-Bit SSL Şifreli Güvenlik</span>
-                      </div>
-                      <div className="flex items-center gap-1.5 text-[#E8D5B5]">
-                        <Clock className="w-3 h-3 text-[#C5A880] shrink-0" />
-                        <span>Ortalama Yanıt Süresi: <strong>30 Dakika</strong></span>
-                      </div>
+                    <div className="flex items-center justify-center gap-1.5 pt-1 px-1 text-[11px] text-gray-400">
+                      <ShieldCheck className="w-3.5 h-3.5 text-[#C5A880] shrink-0" />
+                      <span>KVKK Uyumlu • 256-Bit SSL Şifreli Güvenlik</span>
                     </div>
                   </div>
                 </form>

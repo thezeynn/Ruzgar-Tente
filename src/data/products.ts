@@ -473,7 +473,7 @@ export const CONTACT_INFO = {
   email: 'info@ruzgartente.com',
   address: 'Cumhuriyet, 5205 sk no:31, 35920 Selçuk / İzmir',
   factoryAddress: 'Cumhuriyet Mah. 5205 Sok. No: 31, Selçuk / İzmir',
-  workingHours: 'Haftanın 7 Günü: 08:30 - 20:00 (Açık)',
+  workingHours: 'Pzt - Cmt: 08:30 - 18:00 (Pazar: Kapalı)',
   googleRating: '5.0',
   reviewCount: '6'
 };

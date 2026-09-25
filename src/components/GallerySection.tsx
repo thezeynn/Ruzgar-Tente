@@ -90,15 +90,15 @@ export const GallerySection: React.FC = () => {
           layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence>
             {paginatedProjects.map((project) => (
               <motion.div
                 layout
                 key={project.id}
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
                 className="group relative h-64 sm:h-80 rounded-2xl overflow-hidden border border-white/10 bg-[#14151C] cursor-pointer"
                 onClick={() => setLightboxProject(project)}
               >

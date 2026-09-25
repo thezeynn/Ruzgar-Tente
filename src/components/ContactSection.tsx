@@ -13,6 +13,8 @@ import {
   User,
   Maximize2,
   ArrowRight,
+  ArrowUpRight,
+  Star,
   Layers
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -295,7 +297,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
                   </div>
                   <div>
                     <strong className="text-white block font-semibold mb-0.5">Adres & Üretim Atölyesi:</strong>
-                    <span className="text-gray-400">{CONTACT_INFO.address}</span>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=R%C3%BCzgar+Tente,+Cumhuriyet,+5205+sk+no:31,+35920+Sel%C3%A7uk/%C4%B0zmir"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-[#C5A880] transition-colors inline-flex items-center gap-1 group/addr"
+                    >
+                      <span>{CONTACT_INFO.address}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-[#C5A880] opacity-70 group-hover/addr:opacity-100 transition-opacity" />
+                    </a>
                   </div>
                 </div>
 
@@ -311,17 +321,44 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ preselectedProdu
               </div>
             </div>
 
-            {/* Map Interactive Embed (Kept & Stylized as requested) */}
-            <div className="rounded-3xl overflow-hidden border border-white/10 h-52 bg-[#12131A] relative shadow-lg group">
-              <iframe
-                title="Rüzgar Tente Selçuk İzmir Konum"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12595.642340801704!2d27.359873!3d37.948291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14beaa28a5099f11%3A0x86814234c9df4f4e!2sSel%C3%A7uk%2C%20%C4%B0zmir!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
-                className="w-full h-full border-0 grayscale invert contrast-125 opacity-80 group-hover:opacity-100 transition-opacity"
-                loading="lazy"
-              />
-              <div className="absolute bottom-3 left-3 bg-[#08080B]/90 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10 text-[11px] text-[#E8D5B5] font-medium pointer-events-none flex items-center gap-1.5 shadow">
-                <MapPin className="w-3.5 h-3.5 text-[#C5A880]" />
-                <span>Selçuk / İzmir Konumu</span>
+            {/* Map Interactive Embed - Directly Centered on Rüzgar Tente */}
+            <div className="rounded-3xl overflow-hidden border border-white/10 bg-[#12131A] relative shadow-lg group">
+              <div className="h-64 sm:h-72 w-full relative">
+                <iframe
+                  title="Rüzgar Tente - Cumhuriyet, 5205 Sk. No:31, Selçuk / İzmir"
+                  src="https://maps.google.com/maps?q=R%C3%BCzgar%20Tente%2C%20Cumhuriyet%2C%205205%20sk%20no%3A31%2C%2035920%20Sel%C3%A7uk%2F%C4%B0zmir&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                  className="w-full h-full border-0 transition-opacity"
+                  loading="lazy"
+                  allowFullScreen
+                />
+                
+                {/* Floating Action Button: Open in Google Maps */}
+                <div className="absolute top-3 right-3 z-10">
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=R%C3%BCzgar+Tente,+Cumhuriyet,+5205+sk+no:31,+35920+Sel%C3%A7uk/%C4%B0zmir"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#08080B]/90 hover:bg-[#C5A880] text-white hover:text-black border border-white/15 hover:border-[#C5A880] text-[11px] font-semibold transition-all shadow-xl backdrop-blur-md"
+                  >
+                    <span>Haritalar'da Aç</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+
+                {/* Floating Location Badge */}
+                <div className="absolute bottom-3 left-3 right-3 sm:right-auto bg-[#08080B]/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/15 text-[11px] text-[#E8D5B5] font-medium pointer-events-none flex items-center justify-between sm:justify-start gap-2.5 shadow-xl">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <MapPin className="w-3.5 h-3.5 text-[#C5A880]" />
+                    <span className="font-semibold text-white">Rüzgar Tente</span>
+                  </div>
+                  <span className="text-gray-400 hidden sm:inline">|</span>
+                  <div className="flex items-center gap-1 text-amber-400">
+                    <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                    <span className="font-semibold text-xs">5.0</span>
+                    <span className="text-gray-400 text-[10px]">(6 yorum)</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

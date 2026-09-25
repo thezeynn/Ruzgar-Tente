@@ -166,7 +166,14 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3">
               <li className="flex items-start justify-center sm:justify-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
-                <span className="leading-relaxed">{CONTACT_INFO.address}</span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=R%C3%BCzgar+Tente,+Cumhuriyet,+5205+sk+no:31,+35920+Sel%C3%A7uk/%C4%B0zmir"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="leading-relaxed hover:text-[#C5A880] transition-colors"
+                >
+                  {CONTACT_INFO.address}
+                </a>
               </li>
               <li className="flex items-start justify-center sm:justify-start gap-2.5">
                 <Phone className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />

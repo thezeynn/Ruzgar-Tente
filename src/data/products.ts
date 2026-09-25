@@ -9,9 +9,7 @@ export const PRODUCTS: ProductModel[] = [
     tag: 'En Çok Tercih Edilen',
     image: '/images/sasirtma_pergola_1790269026014.jpg',
     galleryImages: [
-      '/images/sasirtma_pergola_1790269026014.jpg',
-      '/images/jut_sasirtma_1790269003627.jpg',
-      '/images/golgelendirme_yelken_1790268989436.jpg',
+      '/images/sasirtma_pergola_1790269026014.jpg'
     ],
     description: '0-120° açıyla dönebilen ve geriye doğru toplanabilen alüminyum panelleriyle güneş ışığını, havalandırmayı ve yağmur korumasını parmaklarınızın ucuna getirir. Entegre gizli su tahliye kanalları ve kısılamaz lüks LED aydınlatma ile donatılmıştır.',
     features: [
@@ -41,9 +39,7 @@ export const PRODUCTS: ProductModel[] = [
     tag: 'Premium Seri',
     image: '/images/kasetli_tente_1790268955447.jpg',
     galleryImages: [
-      '/images/kasetli_tente_1790268955447.jpg',
-      '/images/koruklu_tente_1790268976928.jpg',
-      '/images/sasirtma_pergola_1790269026014.jpg'
+      '/images/kasetli_tente_1790268955447.jpg'
     ],
     description: 'Kapandığında kumaşını ve hareketli kollarını tamamen içine hapseden alüminyum kaset kutusu sayesinde kumaş ömrünü iki katına çıkarır. Dış etkenlerden, kirden ve tozdan etkilenmeyen mimari estetik.',
     features: [
@@ -73,9 +69,7 @@ export const PRODUCTS: ProductModel[] = [
     tag: 'Klasik & Güçlü',
     image: '/images/kahvecin_mafsalli_tente.jpg',
     galleryImages: [
-      '/images/kahvecin_mafsalli_tente.jpg',
-      '/images/kasetli_tente_1790268955447.jpg',
-      '/images/koruklu_tente_1790268976928.jpg'
+      '/images/kahvecin_mafsalli_tente.jpg'
     ],
     description: 'Yüksek gerilimli alüminyum enjeksiyon kollar ve birinci sınıf solmaz akrilik kumaş ile üretilen mafsallı tente sistemleri, dükkan önleri, restoranlar ve geniş teraslar için en pratik ve güvenilir çözümdür.',
     features: [
@@ -105,9 +99,7 @@ export const PRODUCTS: ProductModel[] = [
     tag: 'Yeni Nesil Çözüm',
     image: '/images/motorlu_store_perde_1790269405082.jpg',
     galleryImages: [
-      '/images/motorlu_store_perde_1790269405082.jpg',
-      '/images/seffaf_kaplama_1790269014129.jpg',
-      '/images/sasirtma_pergola_1790269026014.jpg'
+      '/images/motorlu_store_perde_1790269405082.jpg'
     ],
     description: 'Bina dış cephelerine, pergola yanlarına ve geniş cam pencerelere uygulanan motorlu dikey stor perde sistemleri; güneşin yakıcı ısısını dışarıda tutar, rüzgarı keser ve içeriden dışarısının net görünmesini sağlarken mahremiyet kazandırır.',
     features: [
@@ -137,9 +129,7 @@ export const PRODUCTS: ProductModel[] = [
     tag: 'Zarif & Estetik',
     image: '/images/koruklu_tente_1790268976928.jpg',
     galleryImages: [
-      '/images/koruklu_tente_1790268976928.jpg',
-      '/images/kahvecin_mafsalli_tente.jpg',
-      '/images/kasetli_tente_1790268955447.jpg'
+      '/images/koruklu_tente_1790268976928.jpg'
     ],
     description: 'Pencereler, butik girişleri, tiny house ve oteller için yanlardan gelen eğimli güneş ışınlarını da kesen akordeon körük mekanizmalı zarif tente mimarisi.',
     features: [
@@ -168,9 +158,7 @@ export const PRODUCTS: ProductModel[] = [
     tag: 'Modern Mimari',
     image: '/images/seffaf_kaplama_1790269014129.jpg',
     galleryImages: [
-      '/images/seffaf_kaplama_1790269014129.jpg',
-      '/images/jut_sasirtma_1790269003627.jpg',
-      '/images/sasirtma_pergola_1790269026014.jpg'
+      '/images/seffaf_kaplama_1790269014129.jpg'
     ],
     description: 'Tek bir tuşla yukarıdan aşağıya veya aşağıdan yukarıya kayan silinebilir giyotin cam ve fermuarlı kış koruma sistemleri ile açık alanlarınızı konforlu bir iç mekana çevirin.',
     features: [
@@ -199,9 +187,7 @@ export const PRODUCTS: ProductModel[] = [
     tag: 'Mimari Başyapıt',
     image: '/images/jut_sasirtma_1790269003627.jpg',
     galleryImages: [
-      '/images/jut_sasirtma_1790269003627.jpg',
-      '/images/golgelendirme_yelken_1790268989436.jpg',
-      '/images/sasirtma_pergola_1790269026014.jpg'
+      '/images/jut_sasirtma_1790269003627.jpg'
     ],
     description: 'Dünyada hem toplanma hem katlanma hareketini bir arada sunan Rolling Roof tavan sistemi ve ahşap pergola üzeri jüt şaşırtma kumaş uygulamalarıyla tasarlanan ayrıcalıklı yaşam alanları.',
     features: [

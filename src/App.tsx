@@ -13,10 +13,21 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileQuickBar } from './components/MobileQuickBar';
 import { useNavigationRouter } from './hooks/useNavigationRouter';
 import { navigateTo } from './utils/navigation';
+import { ProductProvider } from './context/ProductContext';
+import { useProducts } from './hooks/useProducts';
+import { AdminPanelModal } from './components/AdminPanelModal';
 
-export function App() {
+function AppContent() {
   const [preselectedProduct, setPreselectedProduct] = useState<string>('Bioklimatik Pergola Sistemleri');
   const { activeSection } = useNavigationRouter();
+  const { openAdminPanel } = useProducts();
+
+  // Check if URL ends with /admin or #admin to open Admin Panel directly
+  useEffect(() => {
+    if (window.location.pathname === '/admin' || window.location.hash === '#admin') {
+      openAdminPanel();
+    }
+  }, [openAdminPanel]);
 
   // Sayfa kaydırma animasyonu (Smooth Scrolling Engine)
   useEffect(() => {
@@ -84,7 +95,25 @@ export function App() {
       {/* Floating Elements */}
       <FloatingWhatsApp />
       <MobileQuickBar onOpenQuote={() => handleOpenQuote()} />
+
+      {/* Admin Panel Modal */}
+      <AdminPanelModal
+        onPreviewProduct={() => {
+          const el = document.getElementById('modeller');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+      />
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <ProductProvider>
+      <AppContent />
+    </ProductProvider>
   );
 }
 

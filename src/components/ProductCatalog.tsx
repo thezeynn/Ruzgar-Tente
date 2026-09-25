@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Eye, MessageCircle, ArrowUpRight, Check } from 'lucide-react';
-import { PRODUCTS, CONTACT_INFO } from '../data/products';
-import type { ProductModel } from '../types';
-
+import { Eye, MessageCircle, ArrowUpRight, Check, ImagePlus } from 'lucide-react';
+import { CONTACT_INFO } from '../data/products';
+import { useProducts } from '../hooks/useProducts';
 import { ProductModal } from './ProductModal';
 import { MaskedHeading } from './MaskedHeading';
 
@@ -12,7 +11,10 @@ interface ProductCatalogProps {
 }
 
 export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductForQuote }) => {
-  const [selectedProduct, setSelectedProduct] = useState<ProductModel | null>(null);
+  const { products, openAdminPanel } = useProducts();
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
+
+  const selectedProduct = selectedProductId ? products.find((p) => p.id === selectedProductId) || null : null;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -42,6 +44,20 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="text-[11px] uppercase tracking-widest text-[#C5A880] font-semibold bg-[#C5A880]/10 px-3 py-1 rounded-full border border-[#C5A880]/20">
+              Lüks Mimari Gölgelendirme
+            </span>
+            <button
+              type="button"
+              onClick={() => openAdminPanel()}
+              className="inline-flex items-center gap-1 text-[11px] text-gray-400 hover:text-[#C5A880] bg-white/5 hover:bg-white/10 px-2.5 py-1 rounded-full border border-white/10 transition-colors cursor-pointer"
+              title="Model fotoğraflarını yönetici panelinden düzenle"
+            >
+              <ImagePlus className="w-3 h-3 text-[#C5A880]" />
+              <span>Fotoğrafları Yönet</span>
+            </button>
+          </div>
           <MaskedHeading
             as="h2"
             className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4"
@@ -65,7 +81,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
           viewport={{ once: true, margin: '-50px' }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
         >
-          {PRODUCTS.map((product) => (
+          {products.map((product) => (
             <motion.div
               key={product.id}
               variants={itemVariants}
@@ -86,8 +102,8 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
                 {/* Quick Hover Overlay Button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-xs">
                   <button
-                    onClick={() => setSelectedProduct(product)}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase shadow-xl hover:bg-[#C5A880] transition-colors"
+                    onClick={() => setSelectedProductId(product.id)}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black font-semibold text-xs tracking-wider uppercase shadow-xl hover:bg-[#C5A880] transition-colors cursor-pointer"
                   >
                     <Eye className="w-4 h-4" />
                     <span>İncele & Teknik Detay</span>
@@ -122,8 +138,8 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
                 {/* Card Action Buttons */}
                 <div className="pt-4 flex items-center gap-2">
                   <button
-                    onClick={() => setSelectedProduct(product)}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-medium text-white transition-all"
+                    onClick={() => setSelectedProductId(product.id)}
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-medium text-white transition-all cursor-pointer"
                   >
                     <span>Detayları Gör</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-[#C5A880]" />
@@ -151,7 +167,7 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
       <ProductModal
         key={selectedProduct?.id}
         product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
+        onClose={() => setSelectedProductId(null)}
         onSelectForQuote={onSelectProductForQuote}
       />
     </section>

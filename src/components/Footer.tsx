@@ -1,10 +1,12 @@
 import React from 'react';
-import { Phone, Mail, MapPin, ArrowUp } from 'lucide-react';
+import { Phone, Mail, MapPin, ArrowUp, ShieldCheck } from 'lucide-react';
 import { CONTACT_INFO, PRODUCTS } from '../data/products';
 import { AwningIcon } from './Header';
 import { navigateTo } from '../utils/navigation';
+import { useProducts } from '../hooks/useProducts';
 
 export const Footer: React.FC = () => {
+  const { openAdminPanel } = useProducts();
   const scrollToTop = () => {
     navigateTo('/anasayfa');
   };
@@ -202,9 +204,19 @@ export const Footer: React.FC = () => {
             © {new Date().getFullYear()} Rüzgar Tente Sistemleri Ltd. Şti. Tüm Hakları Saklıdır.
           </p>
 
-          <div className="flex items-center justify-center gap-6">
+          <div className="flex items-center justify-center flex-wrap gap-4 sm:gap-6">
             <span className="text-gray-500 hover:text-gray-400 cursor-pointer">Gizlilik & KVKK</span>
             <span className="text-gray-500 hover:text-gray-400 cursor-pointer">Garanti Koşulları</span>
+
+            <button
+              type="button"
+              onClick={() => openAdminPanel()}
+              className="inline-flex items-center gap-1.5 text-gray-500 hover:text-[#C5A880] transition-colors cursor-pointer text-xs"
+              title="Rüzgar Tente Model Fotoğrafları Yönetici Paneli"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-[#C5A880]" />
+              <span>Yönetici Paneli</span>
+            </button>
 
             <button
               onClick={scrollToTop}

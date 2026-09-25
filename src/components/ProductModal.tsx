@@ -160,44 +160,48 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                       </span>
                     </div>
 
-                    {/* Bottom Left: Photo Counter */}
-                    <div className="absolute bottom-3 left-3 flex items-center text-xs text-gray-300 pointer-events-none">
-                      <span className="bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 text-[11px]">
-                        {activeImageIndex + 1} / {allImages.length} Fotoğraf
-                      </span>
-                    </div>
+                    {/* Bottom Left: Photo Counter (if multiple) */}
+                    {allImages.length > 1 && (
+                      <div className="absolute bottom-3 left-3 flex items-center text-xs text-gray-300 pointer-events-none">
+                        <span className="bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-md border border-white/10 text-[11px]">
+                          {activeImageIndex + 1} / {allImages.length} Fotoğraf
+                        </span>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Secondary gallery previews */}
-                  <div className="grid grid-cols-4 gap-2">
-                    {allImages.map((img, idx) => {
-                      const isActive = activeImageIndex === idx;
-                      return (
-                        <button
-                          key={idx}
-                          type="button"
-                          onClick={() => {
-                            setActiveImageIndex(idx);
-                          }}
-                          className={`relative h-16 rounded-lg overflow-hidden border transition-all cursor-pointer ${
-                            isActive
-                              ? 'border-[#C5A880] ring-2 ring-[#C5A880]/60 scale-[1.02]'
-                              : 'border-white/10 hover:border-white/30 opacity-70 hover:opacity-100'
-                          }`}
-                          title={`Görsel ${idx + 1}'i göster`}
-                        >
-                          <img
-                            src={img}
-                            alt={`${product.title} ${idx + 1}`}
-                            referrerPolicy="no-referrer"
-                            draggable={false}
-                            onDragStart={(e) => e.preventDefault()}
-                            className="w-full h-full object-cover pointer-events-none"
-                          />
-                        </button>
-                      );
-                    })}
-                  </div>
+                  {/* Secondary gallery previews (Only if there are 2 or more photos) */}
+                  {allImages.length > 1 && (
+                    <div className="grid grid-cols-4 gap-2">
+                      {allImages.map((img, idx) => {
+                        const isActive = activeImageIndex === idx;
+                        return (
+                          <button
+                            key={idx}
+                            type="button"
+                            onClick={() => {
+                              setActiveImageIndex(idx);
+                            }}
+                            className={`relative h-16 rounded-lg overflow-hidden border transition-all cursor-pointer ${
+                              isActive
+                                ? 'border-[#C5A880] ring-2 ring-[#C5A880]/60 scale-[1.02]'
+                                : 'border-white/10 hover:border-white/30 opacity-70 hover:opacity-100'
+                            }`}
+                            title={`Görsel ${idx + 1}'i göster`}
+                          >
+                            <img
+                              src={img}
+                              alt={`${product.title} ${idx + 1}`}
+                              referrerPolicy="no-referrer"
+                              draggable={false}
+                              onDragStart={(e) => e.preventDefault()}
+                              className="w-full h-full object-cover pointer-events-none"
+                            />
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
 
                 {/* Title & Description */}
@@ -411,36 +415,38 @@ export const ProductModal: React.FC<ProductModalProps> = ({
               )}
             </div>
 
-            {/* Bottom Thumbnail Strip */}
-            <div className="relative z-10 px-4 py-3 border-t border-white/10 bg-[#08080B]/80 backdrop-blur-md flex items-center justify-center gap-2 sm:gap-3 overflow-x-auto">
-              {allImages.map((img, idx) => {
-                const isActive = activeImageIndex === idx;
-                return (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => {
-                      setActiveImageIndex(idx);
-                      setIsZoomed(false);
-                    }}
-                    className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border transition-all shrink-0 cursor-pointer ${
-                      isActive
-                        ? 'border-[#C5A880] ring-2 ring-[#C5A880]/70 scale-105 opacity-100'
-                        : 'border-white/15 opacity-50 hover:opacity-100'
-                    }`}
-                  >
-                    <img
-                      src={img}
-                      alt={`Önizleme ${idx + 1}`}
-                      referrerPolicy="no-referrer"
-                      draggable={false}
-                      onDragStart={(e) => e.preventDefault()}
-                      className="w-full h-full object-cover pointer-events-none"
-                    />
-                  </button>
-                );
-              })}
-            </div>
+            {/* Bottom Thumbnail Strip (Only if there are 2 or more images) */}
+            {allImages.length > 1 && (
+              <div className="relative z-10 px-4 py-3 border-t border-white/10 bg-[#08080B]/80 backdrop-blur-md flex items-center justify-center gap-2 sm:gap-3 overflow-x-auto">
+                {allImages.map((img, idx) => {
+                  const isActive = activeImageIndex === idx;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => {
+                        setActiveImageIndex(idx);
+                        setIsZoomed(false);
+                      }}
+                      className={`relative w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border transition-all shrink-0 cursor-pointer ${
+                        isActive
+                          ? 'border-[#C5A880] ring-2 ring-[#C5A880]/70 scale-105 opacity-100'
+                          : 'border-white/15 opacity-50 hover:opacity-100'
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`Önizleme ${idx + 1}`}
+                        referrerPolicy="no-referrer"
+                        draggable={false}
+                        onDragStart={(e) => e.preventDefault()}
+                        className="w-full h-full object-cover pointer-events-none"
+                      />
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         )}
       </AnimatePresence>

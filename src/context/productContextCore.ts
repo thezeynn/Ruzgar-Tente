@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import type { ProductModel } from '../types';
+import type { ProductModel, ProjectShowcase } from '../types';
 
 export interface ProductContextType {
   products: ProductModel[];
@@ -10,11 +10,22 @@ export interface ProductContextType {
   reorderProductImages: (productId: string, images: string[]) => void;
   resetProductToDefault: (productId: string) => void;
   resetAllToDefault: () => void;
+
+  // Mimari Başyapıtlar Gallery Management
+  galleryProjects: ProjectShowcase[];
+  addGalleryProject: (project: Omit<ProjectShowcase, 'id'>) => void;
+  removeGalleryProject: (id: string) => void;
+  toggleGalleryProjectVisibility: (id: string) => void;
+  resetGalleryProjectsToDefault: () => void;
+
+  // Admin Modal Controls
   isAdminOpen: boolean;
   setIsAdminOpen: (open: boolean) => void;
   adminSelectedProductId: string | null;
   setAdminSelectedProductId: (id: string | null) => void;
-  openAdminPanel: (productId?: string) => void;
+  adminActiveTab: 'products' | 'gallery';
+  setAdminActiveTab: (tab: 'products' | 'gallery') => void;
+  openAdminPanel: (productId?: string, tab?: 'products' | 'gallery') => void;
 }
 
 export const ProductContext = createContext<ProductContextType | undefined>(undefined);

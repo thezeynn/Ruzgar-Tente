@@ -30,6 +30,7 @@ export interface ProjectShowcase {
   location: string;
   image: string;
   system: string;
+  visible?: boolean;
 }
 
 export interface Testimonial {

@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useCallback, type ReactNode } from 'react';
-import type { ProductModel } from '../types';
-import { PRODUCTS as DEFAULT_PRODUCTS } from '../data/products';
+import type { ProductModel, ProjectShowcase } from '../types';
+import { PRODUCTS as DEFAULT_PRODUCTS, SHOWCASE_PROJECTS as DEFAULT_PROJECTS } from '../data/products';
 import { ProductContext } from './productContextCore';
 
-const STORAGE_KEY = 'ruzgar_tente_products_v1';
+const PRODUCTS_STORAGE_KEY = 'ruzgar_tente_products_v1';
+const GALLERY_STORAGE_KEY = 'ruzgar_tente_gallery_projects_v1';
 
 export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [products, setProducts] = useState<ProductModel[]>(() => {
     try {
-      const stored = localStorage.getItem(STORAGE_KEY);
+      const stored = localStorage.getItem(PRODUCTS_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) {
@@ -32,10 +33,29 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     return DEFAULT_PRODUCTS;
   });
 
+  const [galleryProjects, setGalleryProjects] = useState<ProjectShowcase[]>(() => {
+    try {
+      const stored = localStorage.getItem(GALLERY_STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed.map((item) => ({
+            ...item,
+            visible: item.visible !== false,
+          }));
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load gallery projects from localStorage:', e);
+    }
+    return DEFAULT_PROJECTS.map((p) => ({ ...p, visible: true }));
+  });
+
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
   const [adminSelectedProductId, setAdminSelectedProductId] = useState<string | null>(null);
+  const [adminActiveTab, setAdminActiveTab] = useState<'products' | 'gallery'>('products');
 
-  // Save to localStorage whenever products change
+  // Save products to localStorage whenever products change
   useEffect(() => {
     try {
       const toSave = products.map((p) => ({
@@ -43,14 +63,26 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
         image: p.image,
         galleryImages: p.galleryImages,
       }));
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+      localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(toSave));
     } catch (e) {
       console.error('Failed to save products to localStorage:', e);
     }
   }, [products]);
 
+  // Save gallery projects to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem(GALLERY_STORAGE_KEY, JSON.stringify(galleryProjects));
+    } catch (e) {
+      console.error('Failed to save gallery projects to localStorage:', e);
+    }
+  }, [galleryProjects]);
+
   // Open admin panel helper
-  const openAdminPanel = useCallback((productId?: string) => {
+  const openAdminPanel = useCallback((productId?: string, tab?: 'products' | 'gallery') => {
+    if (tab) {
+      setAdminActiveTab(tab);
+    }
     if (productId) {
       setAdminSelectedProductId(productId);
     } else if (products.length > 0) {
@@ -90,7 +122,6 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
         const currentGallery = Array.isArray(p.galleryImages) ? p.galleryImages : [p.image];
         const filtered = currentGallery.filter((img) => img !== imageUrl);
         
-        // If the removed image was the main cover, set the new main cover to the next available image
         let newMain = p.image;
         if (p.image === imageUrl) {
           newMain = filtered.length > 0 ? filtered[0] : (DEFAULT_PRODUCTS.find((d) => d.id === productId)?.image || '');
@@ -157,7 +188,39 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
   // Reset all products to default factory images
   const resetAllToDefault = useCallback(() => {
     setProducts(DEFAULT_PRODUCTS);
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(PRODUCTS_STORAGE_KEY);
+  }, []);
+
+  // Mimari Başyapıtlar Gallery Handlers
+  const addGalleryProject = useCallback((project: Omit<ProjectShowcase, 'id'>) => {
+    const newProject: ProjectShowcase = {
+      ...project,
+      id: `prj-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+      visible: project.visible !== false,
+    };
+    setGalleryProjects((prev) => [newProject, ...prev]);
+  }, []);
+
+  const removeGalleryProject = useCallback((id: string) => {
+    setGalleryProjects((prev) => prev.filter((p) => p.id !== id));
+  }, []);
+
+  const toggleGalleryProjectVisibility = useCallback((id: string) => {
+    setGalleryProjects((prev) =>
+      prev.map((p) => {
+        if (p.id !== id) return p;
+        return {
+          ...p,
+          visible: p.visible === false ? true : false,
+        };
+      })
+    );
+  }, []);
+
+  const resetGalleryProjectsToDefault = useCallback(() => {
+    const defaults = DEFAULT_PROJECTS.map((p) => ({ ...p, visible: true }));
+    setGalleryProjects(defaults);
+    localStorage.removeItem(GALLERY_STORAGE_KEY);
   }, []);
 
   return (
@@ -171,10 +234,17 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
         reorderProductImages,
         resetProductToDefault,
         resetAllToDefault,
+        galleryProjects,
+        addGalleryProject,
+        removeGalleryProject,
+        toggleGalleryProjectVisibility,
+        resetGalleryProjectsToDefault,
         isAdminOpen,
         setIsAdminOpen,
         adminSelectedProductId,
         setAdminSelectedProductId,
+        adminActiveTab,
+        setAdminActiveTab,
         openAdminPanel,
       }}
     >
@@ -182,4 +252,3 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     </ProductContext.Provider>
   );
 };
-

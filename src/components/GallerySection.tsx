@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, X, Eye } from 'lucide-react';
-import { SHOWCASE_PROJECTS, CONTACT_INFO } from '../data/products';
+import { MapPin, X, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import { CONTACT_INFO } from '../data/products';
 import type { ProjectShowcase } from '../types';
 import { MaskedHeading } from './MaskedHeading';
+import { useProducts } from '../hooks/useProducts';
 
+const ITEMS_PER_PAGE = 9;
 
 export const GallerySection: React.FC = () => {
+  const { galleryProjects } = useProducts();
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [lightboxProject, setLightboxProject] = useState<ProjectShowcase | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const categories = [
     { id: 'all', label: 'Tüm Projeler' },
@@ -18,9 +22,28 @@ export const GallerySection: React.FC = () => {
     { id: 'ticari', label: 'Ticari & Otel' },
   ];
 
+  // Only show projects marked as visible (or default true)
+  const visibleProjects = galleryProjects.filter((p) => p.visible !== false);
+
   const filteredProjects = activeCategory === 'all'
-    ? SHOWCASE_PROJECTS
-    : SHOWCASE_PROJECTS.filter((p) => p.category === activeCategory);
+    ? visibleProjects
+    : visibleProjects.filter((p) => p.category === activeCategory);
+
+  // Total pages calculation
+  const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
+
+  // Paginated items
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedProjects = filteredProjects.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+  const handlePageChange = (page: number) => {
+    if (page < 1 || page > totalPages) return;
+    setCurrentPage(page);
+    const sectionEl = document.getElementById('projeler');
+    if (sectionEl) {
+      sectionEl.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="projeler" className="py-14 sm:py-24 bg-[#08080B] relative overflow-hidden">
@@ -47,8 +70,11 @@ export const GallerySection: React.FC = () => {
           {categories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              className={`px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider transition-all duration-300 ${
+              onClick={() => {
+                setActiveCategory(cat.id);
+                setCurrentPage(1);
+              }}
+              className={`px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider transition-all duration-300 cursor-pointer ${
                 activeCategory === cat.id
                   ? 'bg-gradient-to-r from-[#C5A880] to-[#D4AF37] text-black shadow-lg shadow-[#C5A880]/20 scale-105'
                   : 'bg-[#181920] text-gray-400 hover:text-white border border-white/5 hover:border-white/10'
@@ -64,8 +90,8 @@ export const GallerySection: React.FC = () => {
           layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
-          <AnimatePresence>
-            {filteredProjects.map((project) => (
+          <AnimatePresence mode="popLayout">
+            {paginatedProjects.map((project) => (
               <motion.div
                 layout
                 key={project.id}
@@ -110,6 +136,70 @@ export const GallerySection: React.FC = () => {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Empty state if category has no projects */}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-16 text-gray-400">
+            <p className="text-sm">Bu kategoride henüz yayınlanmış proje bulunmamaktadır.</p>
+          </div>
+        )}
+
+        {/* Yan Sayfa (Pagination) Controls - 9 Fotoğraftan Sonra */}
+        {totalPages > 1 && (
+          <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-white/5">
+            <p className="text-xs text-gray-400">
+              Toplam <span className="text-[#C5A880] font-semibold">{filteredProjects.length}</span> projeden{' '}
+              <span className="text-white font-medium">
+                {startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, filteredProjects.length)}
+              </span>{' '}
+              arası gösteriliyor
+            </p>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="p-2.5 rounded-xl bg-[#14151C] border border-white/10 text-gray-300 hover:text-white hover:border-[#C5A880]/50 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                aria-label="Önceki Sayfa"
+                title="Önceki Sayfa"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+
+              <div className="flex items-center gap-1.5">
+                {Array.from({ length: totalPages }, (_, idx) => idx + 1).map((pageNum) => {
+                  const isActive = currentPage === pageNum;
+                  return (
+                    <button
+                      key={pageNum}
+                      type="button"
+                      onClick={() => handlePageChange(pageNum)}
+                      className={`min-w-9 h-9 px-3 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                        isActive
+                          ? 'bg-gradient-to-r from-[#C5A880] to-[#D4AF37] text-black font-bold shadow-md shadow-[#C5A880]/20'
+                          : 'bg-[#14151C] border border-white/10 text-gray-300 hover:text-white hover:border-[#C5A880]/40'
+                      }`}
+                    >
+                      {pageNum}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className="p-2.5 rounded-xl bg-[#14151C] border border-white/10 text-gray-300 hover:text-white hover:border-[#C5A880]/50 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer"
+                aria-label="Sonraki Sayfa"
+                title="Sonraki Sayfa"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Lightbox Modal */}
@@ -124,7 +214,7 @@ export const GallerySection: React.FC = () => {
           >
             <button
               onClick={() => setLightboxProject(null)}
-              className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-black/60 text-white hover:bg-black/90 border border-white/10"
+              className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-black/60 text-white hover:bg-black/90 border border-white/10 cursor-pointer"
               aria-label="Kapat"
             >
               <X className="w-5 h-5" />

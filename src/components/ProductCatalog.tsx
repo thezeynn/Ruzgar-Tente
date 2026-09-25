@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Eye, MessageCircle, ArrowUpRight, Check, ImagePlus } from 'lucide-react';
+import { Eye, MessageCircle, ArrowUpRight, Check } from 'lucide-react';
 import { CONTACT_INFO } from '../data/products';
 import { useProducts } from '../hooks/useProducts';
 import { ProductModal } from './ProductModal';
@@ -11,7 +11,7 @@ interface ProductCatalogProps {
 }
 
 export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductForQuote }) => {
-  const { products, openAdminPanel } = useProducts();
+  const { products } = useProducts();
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
 
   const selectedProduct = selectedProductId ? products.find((p) => p.id === selectedProductId) || null : null;
@@ -44,20 +44,6 @@ export const ProductCatalog: React.FC<ProductCatalogProps> = ({ onSelectProductF
       <div className="w-full max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-14 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-16">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="text-[11px] uppercase tracking-widest text-[#C5A880] font-semibold bg-[#C5A880]/10 px-3 py-1 rounded-full border border-[#C5A880]/20">
-              Lüks Mimari Gölgelendirme
-            </span>
-            <button
-              type="button"
-              onClick={() => openAdminPanel()}
-              className="inline-flex items-center gap-1 text-[11px] text-gray-400 hover:text-[#C5A880] bg-white/5 hover:bg-white/10 px-2.5 py-1 rounded-full border border-white/10 transition-colors cursor-pointer"
-              title="Model fotoğraflarını yönetici panelinden düzenle"
-            >
-              <ImagePlus className="w-3 h-3 text-[#C5A880]" />
-              <span>Fotoğrafları Yönet</span>
-            </button>
-          </div>
           <MaskedHeading
             as="h2"
             className="font-display text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-3 sm:mb-4"

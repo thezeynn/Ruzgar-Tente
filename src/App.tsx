@@ -22,11 +22,22 @@ function AppContent() {
   const { activeSection } = useNavigationRouter();
   const { openAdminPanel } = useProducts();
 
-  // Check if URL ends with /admin or #admin to open Admin Panel directly
+  // Check if URL ends with /admin or #admin or key shortcut to open Admin Panel
   useEffect(() => {
     if (window.location.pathname === '/admin' || window.location.hash === '#admin') {
       openAdminPanel();
     }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Alt + A or Ctrl + Shift + A shortcut to open Admin Panel
+      if ((e.altKey && e.key.toLowerCase() === 'a') || (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a')) {
+        e.preventDefault();
+        openAdminPanel();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [openAdminPanel]);
 
   // Sayfa kaydırma animasyonu (Smooth Scrolling Engine)
